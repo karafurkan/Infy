@@ -25,7 +25,7 @@ public class MainMenu : MonoBehaviour
 
     public void startGameButtonClicked() {
         GameController.isGameOver = false;
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("GameScene");
     }
 
     public void highScoresButtonClicked() {
