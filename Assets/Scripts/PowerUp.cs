@@ -4,55 +4,59 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour
 {
-    public GameObject powerUp;
+    public Sprite reverseControlSprite;
+    public Sprite shieldSprite;
 
     public float[] spawnPoints = new float[4];
-
+    /*
+    public PowerUp(GameObject pu, GameObject llo, GameObject rlo)
+    {
+        powerUpObject = pu;
+        leftLastObject = llo;
+        rightLastObject = rlo;
+    }
+    */
+    Pooling pooling; // = GetComponent<Pooling>();
     void Start()
     {
+        pooling = GetComponent<Pooling>();
 
         spawnPoints[0] = -2.0f;
         spawnPoints[1] = -0.5f;
         spawnPoints[2] = 0.5f;
         spawnPoints[3] = 2.0f;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        transform.Translate(0, objectMover.speed * Time.deltaTime, 0);
-    }
-
-    void OnTriggerEnter2D(Collider2D col) { 
-        powerUp.SetActive(false);
-        Invoke("getRandomPosition", 2.0f);
+        pooling.GetComponent<SpriteRenderer>().color = Color.red;
     }
 
 
-    void getRandomPosition() {
+    public void getRandomPosition() {
+        Debug.Log("getrandomPos Running");
         int pos = Random.Range(0,4);
-        float posY;
+        float spawnGap = Random.Range(2.5f, 4f);
+        
+
         if (spawnPoints[pos] < 0f) {
-            posY = Pooling.leftObjectY - 2f;
-            //Debug.Log("LeftObjectY = " + Pooling.leftObjectY);
-            //Debug.Log("PowerUP = " + posY);
+            float powerUpY = pooling.leftLastObject.transform.position.y - spawnGap;
+            pooling.PowerUpObject.transform.position = new Vector3(spawnPoints[pos], powerUpY, 0);
+            pooling.leftLastObject = pooling.PowerUpObject;
         } else {
-            posY = Pooling.rightObjectY - 2f;
-            //Debug.Log("RightObjectY = " + Pooling.rightObjectY);
-            //Debug.Log("PowerUP = " + posY);
+            float powerUpY = pooling.rightLastObject.transform.position.y - spawnGap;
+            pooling.PowerUpObject.transform.position = new Vector3(spawnPoints[pos], powerUpY, 0);
+            pooling.rightLastObject = pooling.PowerUpObject;
         }
-        powerUp.transform.position = new Vector3(spawnPoints[pos], posY, 0);
-        powerUp.SetActive(true);
+        pooling.PowerUpObject.SetActive(true);
 
 
         int randomPowerUp = Random.Range(0,2);  // To determine which power-up is it going to be.
-        //randomPowerUp = 1;  // Uncomment it to have all the powerups 'reverse'
+        //int randomPowerUp = 0;  // Uncomment it to have all the powerups 'reverse'
         if(randomPowerUp == 0) {
             Debug.Log("SHIELD POWERUP CREATED");
-            powerUp.tag = "shield";
+            pooling.PowerUpObject.tag = "shield";
+            pooling.PowerUpObject.GetComponent<SpriteRenderer>().color = Color.blue;
         } else {
             Debug.Log("REVERSE POWERUP CREATED");
-            powerUp.tag = "reverse";
+            pooling.PowerUpObject.tag = "reverse";
+            pooling.PowerUpObject.GetComponent<SpriteRenderer>().color = Color.red;
         }
         
      
