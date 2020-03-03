@@ -80,7 +80,7 @@ public class Pooling : MonoBehaviour
             rightLastObject = col.gameObject;
             //rightObjectY = rightLastObject.transform.position.y;
         }
-        else if(col.gameObject.tag == "shield" || col.gameObject.tag == "reverse") //check if tag exists in a predefined string array
+        else if(col.gameObject.tag == "shield" || col.gameObject.tag == "reverse") //TODO: instead, check if tag exists in a predefined string array
         {
             col.gameObject.SetActive(false);
             float randomFloat = Random.Range(20f, 45f);

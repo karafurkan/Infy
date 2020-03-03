@@ -8,15 +8,8 @@ public class PowerUp : MonoBehaviour
     public Sprite shieldSprite;
 
     public float[] spawnPoints = new float[4];
-    /*
-    public PowerUp(GameObject pu, GameObject llo, GameObject rlo)
-    {
-        powerUpObject = pu;
-        leftLastObject = llo;
-        rightLastObject = rlo;
-    }
-    */
-    Pooling pooling; // = GetComponent<Pooling>();
+
+    Pooling pooling;
     void Start()
     {
         pooling = GetComponent<Pooling>();
@@ -30,9 +23,8 @@ public class PowerUp : MonoBehaviour
 
 
     public void getRandomPosition() {
-        Debug.Log("getrandomPos Running");
         int pos = Random.Range(0,4);
-        float spawnGap = Random.Range(2.5f, 4f);
+        float spawnGap = Random.Range(1f, 2f);
         
 
         if (spawnPoints[pos] < 0f) {
@@ -50,11 +42,11 @@ public class PowerUp : MonoBehaviour
         int randomPowerUp = Random.Range(0,2);  // To determine which power-up is it going to be.
         //int randomPowerUp = 0;  // Uncomment it to have all the powerups 'reverse'
         if(randomPowerUp == 0) {
-            Debug.Log("SHIELD POWERUP CREATED");
+            //Debug.Log("SHIELD POWERUP CREATED");
             pooling.PowerUpObject.tag = "shield";
             pooling.PowerUpObject.GetComponent<SpriteRenderer>().color = Color.blue;
         } else {
-            Debug.Log("REVERSE POWERUP CREATED");
+            //Debug.Log("REVERSE POWERUP CREATED");
             pooling.PowerUpObject.tag = "reverse";
             pooling.PowerUpObject.GetComponent<SpriteRenderer>().color = Color.red;
         }
