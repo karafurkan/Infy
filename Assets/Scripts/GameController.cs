@@ -37,7 +37,7 @@ public class GameController : MonoBehaviour
     {
         if(Input.GetKeyDown (KeyCode.Escape)) 
         {
-            Debug.Log("Esc is pressed!");
+            //Debug.Log("Esc is pressed!");
             if (isPaused == false) {
                 PauseGame();
             } else {

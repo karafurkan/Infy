@@ -9,7 +9,9 @@ public class Pooling : MonoBehaviour
     public float[] spawnPoints = new float[3];
     public GameObject leftLastObject;
     public GameObject rightLastObject;
-    
+    public static float leftObjectY;   
+    public static float rightObjectY;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +19,8 @@ public class Pooling : MonoBehaviour
         spawnPoints[1] = 2.0f;
         spawnPoints[2] = 3.0f;
         
+        leftObjectY = leftLastObject.transform.position.y;
+        rightObjectY = rightLastObject.transform.position.y;
         
 
 
@@ -46,6 +50,8 @@ public class Pooling : MonoBehaviour
             }
             
             leftLastObject = col.gameObject;
+            leftObjectY = leftLastObject.transform.position.y;
+            
         }
         else if (col.gameObject.tag == "right")
         {
@@ -62,6 +68,7 @@ public class Pooling : MonoBehaviour
                 col.gameObject.transform.position = new Vector3(2.24f, rightY, 0f);
             }
             rightLastObject = col.gameObject;
+            rightObjectY = rightLastObject.transform.position.y;
         }
 
     }
