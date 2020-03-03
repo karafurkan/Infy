@@ -17,13 +17,19 @@ public class CollisionController : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D col) {
-        Debug.Log("HIT!!!!");
-        if (col.gameObject.tag == "power-up") {   // CheckobjectMover.speed if the player gets any power-up.
-            //if (col.gameObject.name == "shield") {
-                Debug.Log("HIT power up!!!!");
-                ActivateShield();
-                Invoke("DeactivateShield", 5.0f);
-           // }
+        Debug.Log("Hit!");
+        if (col.gameObject.tag == "shield") {   
+            Debug.Log("Hit Shield!");
+            ActivateShield();
+            Invoke("DeactivateShield", 5.0f);
+        }
+        else if (col.gameObject.tag == "reverse") {  
+            Debug.Log("Hit reverse!");
+            ActivateReverseMode();
+            Invoke("DeactivateReverseMode", 5.0f);
+        }
+        else if (col.gameObject.tag == "test") { 
+
         }
         if (col.gameObject.tag == "left" || col.gameObject.tag == "right") {  // Checks if the player hits to the obstacles.
             if(hasShield == false) {
@@ -32,6 +38,16 @@ public class CollisionController : MonoBehaviour
         }
 
     }
+
+    void ActivateReverseMode() {
+        Debug.Log("ACTIVATED REVERSE MODE");
+        BallController.isReversed = true;
+    }
+
+    void DeactivateReverseMode() {
+        BallController.isReversed = false;
+    }
+
 
     void DeactivateShield() {
         hasShield = false;

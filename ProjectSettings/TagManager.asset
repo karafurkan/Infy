@@ -9,6 +9,9 @@ TagManager:
   - left-ball
   - right-ball
   - power-up
+  - test
+  - shield
+  - reverse
   layers:
   - Default
   - TransparentFX

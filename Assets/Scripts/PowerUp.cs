@@ -43,6 +43,18 @@ public class PowerUp : MonoBehaviour
         }
         powerUp.transform.position = new Vector3(spawnPoints[pos], posY, 0);
         powerUp.SetActive(true);
+
+
+        int randomPowerUp = Random.Range(0,2);  // To determine which power-up is it going to be.
+        //randomPowerUp = 1;  // Uncomment it to have all the powerups 'reverse'
+        if(randomPowerUp == 0) {
+            Debug.Log("SHIELD POWERUP CREATED");
+            powerUp.tag = "shield";
+        } else {
+            Debug.Log("REVERSE POWERUP CREATED");
+            powerUp.tag = "reverse";
+        }
+        
      
     }
 
