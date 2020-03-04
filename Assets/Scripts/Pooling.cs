@@ -77,8 +77,7 @@ public class Pooling : MonoBehaviour
         {
             col.gameObject.SetActive(false);
             float randomFloat = Random.Range(20f, 45f);
-            PowerUpControl.Invoke("getRandomPosition", 2f); //change spawn time
-            //PowerUpControl.getRandomPosition();
+            PowerUpControl.Invoke("CreatePowerUp", 2f); //change spawn time
         }
 
     }

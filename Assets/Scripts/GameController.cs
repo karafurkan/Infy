@@ -10,7 +10,7 @@ public class GameController : MonoBehaviour
     const int resolutionY = 16;
     bool isPaused;
     public static bool isGameOver;
-
+    
     public Button restartButton;
     public Button returnMainMenuButton;
 

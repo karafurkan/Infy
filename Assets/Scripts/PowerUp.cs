@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PowerUp : MonoBehaviour
 {
     public SpriteRenderer powerUpSpriteRenderer;
 
     public float[] spawnPoints = new float[4];
+
+    public static bool hasShield = false;
+
 
     Pooling pooling;
     void Start()
@@ -21,11 +25,11 @@ public class PowerUp : MonoBehaviour
     }
 
 
-    public void getRandomPosition() {
+    public void CreatePowerUp() {
         int pos = Random.Range(0,4);
         float spawnGap = Random.Range(1f, 2f);
         
-
+        
         if (spawnPoints[pos] < 0f) {
             float powerUpY = pooling.leftLastObject.transform.position.y - spawnGap;
             pooling.PowerUpObject.transform.position = new Vector3(spawnPoints[pos], powerUpY, 0);
