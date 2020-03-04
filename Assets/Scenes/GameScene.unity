@@ -1808,6 +1808,7 @@ GameObject:
   - component: {fileID: 1637709553}
   - component: {fileID: 1637709552}
   - component: {fileID: 1637709555}
+  - component: {fileID: 1637709556}
   m_Layer: 8
   m_Name: TopLimit
   m_TagString: Untagged
@@ -1894,6 +1895,25 @@ MonoBehaviour:
   - 0
   leftLastObject: {fileID: 2120047945}
   rightLastObject: {fileID: 11657018}
+  PowerUpObject: {fileID: 1947990314}
+--- !u!114 &1637709556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637709551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48a4943071e9549dda2475259f524a4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerUpSpriteRenderer: {fileID: 0}
+  spawnPoints:
+  - 0
+  - 0
+  - 0
+  - 0
 --- !u!1 &1656120147
 GameObject:
   m_ObjectHideFlags: 0
@@ -2446,11 +2466,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1947990317}
   - component: {fileID: 1947990316}
-  - component: {fileID: 1947990315}
   - component: {fileID: 1947990318}
+  - component: {fileID: 1947990315}
   m_Layer: 8
   m_Name: power-up
-  m_TagString: power-up
+  m_TagString: shield
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2464,15 +2484,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1947990314}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48a4943071e9549dda2475259f524a4b, type: 3}
+  m_Script: {fileID: 11500000, guid: e496ed5c89245b046a3ca3c909a8672a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUp: {fileID: 1947990314}
-  spawnPoints:
-  - 0
-  - 0
-  - 0
-  - 0
 --- !u!212 &1947990316
 SpriteRenderer:
   m_ObjectHideFlags: 0

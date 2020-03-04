@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour
 {
-    public Sprite reverseControlSprite;
-    public Sprite shieldSprite;
+    public SpriteRenderer powerUpSpriteRenderer;
 
     public float[] spawnPoints = new float[4];
 
@@ -13,7 +12,7 @@ public class PowerUp : MonoBehaviour
     void Start()
     {
         pooling = GetComponent<Pooling>();
-
+        powerUpSpriteRenderer = pooling.PowerUpObject.GetComponent<SpriteRenderer>();
         spawnPoints[0] = -2.0f;
         spawnPoints[1] = -0.5f;
         spawnPoints[2] = 0.5f;
@@ -44,11 +43,11 @@ public class PowerUp : MonoBehaviour
         if(randomPowerUp == 0) {
             //Debug.Log("SHIELD POWERUP CREATED");
             pooling.PowerUpObject.tag = "shield";
-            pooling.PowerUpObject.GetComponent<SpriteRenderer>().color = Color.blue;
+            powerUpSpriteRenderer.color = Color.blue;
         } else {
             //Debug.Log("REVERSE POWERUP CREATED");
             pooling.PowerUpObject.tag = "reverse";
-            pooling.PowerUpObject.GetComponent<SpriteRenderer>().color = Color.red;
+            powerUpSpriteRenderer.color = Color.red;
         }
         
      

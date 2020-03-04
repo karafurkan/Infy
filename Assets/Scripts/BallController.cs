@@ -45,8 +45,13 @@ public class BallController : MonoBehaviour
         {
             moveRightBall();
         }
+        
+    }
+
+    private void FixedUpdate()
+    {
         //left ball movement
-        if(hitLeftBall && !leftBallMoving)
+        if (hitLeftBall && !leftBallMoving)
         {
             leftBallRB.AddForce(velocity * leftBallDirection, ForceMode2D.Impulse);
             leftBallMoving = true;
@@ -81,11 +86,11 @@ public class BallController : MonoBehaviour
                     leftBallMoving = false;
                     leftBallDirection = 1;
                 }
-            }     
+            }
         }
 
 
-        
+
 
         //right ball movement
         if (hitRightBall && !rightBallMoving)
@@ -125,9 +130,7 @@ public class BallController : MonoBehaviour
                 }
             }
         }
-
     }
-    
 
     public void moveLeftBall()
     {
