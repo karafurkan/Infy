@@ -18,7 +18,6 @@ public class GameController : MonoBehaviour
     {
         float screenRatio = Screen.width*1f / Screen.height;
         float bestRatio = resolutionX*1f / resolutionY;
-        
         if (screenRatio <= bestRatio)
         {
             GetComponent<Camera>().rect = new Rect(0,(1f- screenRatio / bestRatio)/2f, 1, screenRatio / bestRatio);

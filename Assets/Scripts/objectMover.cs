@@ -6,11 +6,11 @@ using UnityEngine;
 
 public class objectMover : MonoBehaviour
 {
-    public static float speed = 3f;
+    public static float speed = 2.5f;
 
     // Start is called before the first frame update
     void Start() {
-        speed = 3f;
+
         InvokeRepeating("AdjustSpeed", 0.0f, 0.2f);
     }
 

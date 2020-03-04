@@ -86,14 +86,14 @@ public class Pooling : MonoBehaviour
     private void InitializeObstacles()
     {
         //initialize left obstacles
-        int selection = Random.Range(0, 2);
+        int selection = Random.Range(0, 2); 
         if (selection == 0)
         {
-            leftLastObject.transform.position = new Vector3(-2.1f, -2, 0f);
+            leftLastObject.transform.position = new Vector3(-2.1f, -2, 0f); // Left-left
         }
         else
         {
-            leftLastObject.transform.position = new Vector3(-0.67f, -2, 0f);
+            leftLastObject.transform.position = new Vector3(-0.67f, -2, 0f); // Left-right
         }
         
         foreach (GameObject go in leftObstacleArray)
@@ -124,7 +124,7 @@ public class Pooling : MonoBehaviour
             rightLastObject.transform.position = new Vector3(2.24f, -2, 0f);
         }
 
-        foreach (GameObject go in leftObstacleArray)
+        foreach (GameObject go in rightObstacleArray)
         {
             Debug.Log("right: "+ go.name);
             float rightRandomInt = Random.Range(minimumGap, maximumGap);

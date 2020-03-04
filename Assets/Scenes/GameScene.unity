@@ -1905,7 +1905,7 @@ MonoBehaviour:
   - {fileID: 2145651221}
   - {fileID: 11657018}
   minimumGap: 2.5
-  maximumGap: 5
+  maximumGap: 4
 --- !u!114 &1637709556
 MonoBehaviour:
   m_ObjectHideFlags: 0
