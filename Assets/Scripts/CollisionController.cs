@@ -4,24 +4,63 @@ using UnityEngine;
 
 public class CollisionController : MonoBehaviour
 {
-    
-    void Start()
-    {
+
+    bool hasShield;
+
+    void Start() {
+
+        powerUpInit(); // Initializes all the power-up flags to false.
+    }
+
+    void Update() {
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    void OnTriggerEnter2D(Collider2D col) {
+        Debug.Log("Hit!");
+        if (col.gameObject.tag == "shield") {   
+            Debug.Log("Hit Shield!");
+            ActivateShield();
+            Invoke("DeactivateShield", 5.0f);
+        }
+        else if (col.gameObject.tag == "reverse") {  
+            Debug.Log("Hit reverse!");
+            ActivateReverseMode();
+            Invoke("DeactivateReverseMode", 5.0f);
+        }
+        else if (col.gameObject.tag == "test") { 
 
-    void OnTriggerEnter2D(Collider2D col)
-    {
-        if (col.gameObject.tag == "left" || col.gameObject.tag == "right") {
-            GameController.isGameOver = true;
+        }
+        if (col.gameObject.tag == "left" || col.gameObject.tag == "right") {  // Checks if the player hits to the obstacles.
+            if(hasShield == false) {
+               GameController.isGameOver = true;
+            }
         }
 
+    }
+
+    void ActivateReverseMode() {
+        Debug.Log("ACTIVATED REVERSE MODE");
+        BallController.isReversed = true;
+    }
+
+    void DeactivateReverseMode() {
+        BallController.isReversed = false;
+    }
+
+
+    void DeactivateShield() {
+        hasShield = false;
+        Debug.Log("Deactivated!");
+    }
+
+    void ActivateShield() {
+        hasShield = true;
+    }
+
+
+    void powerUpInit() {
+        hasShield = false;
     }
 
 }

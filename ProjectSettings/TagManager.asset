@@ -8,6 +8,10 @@ TagManager:
   - right
   - left-ball
   - right-ball
+  - power-up
+  - test
+  - shield
+  - reverse
   layers:
   - Default
   - TransparentFX
@@ -17,8 +21,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - background
+  - foreground
   - 
   - 
   - 
@@ -44,4 +48,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: background
+    uniqueID: 2655454631
+    locked: 0
+  - name: foreground
+    uniqueID: 3122231829
     locked: 0

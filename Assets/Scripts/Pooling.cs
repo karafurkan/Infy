@@ -9,14 +9,28 @@ public class Pooling : MonoBehaviour
     public float[] spawnPoints = new float[3];
     public GameObject leftLastObject;
     public GameObject rightLastObject;
-    
+    public GameObject PowerUpObject;
+
+
+    private PowerUp PowerUpControl;
+    /*
+    public static float leftObjectY;   
+    public static float rightObjectY;
+    */
+
     // Start is called before the first frame update
     void Start()
     {
+        PowerUpControl = GetComponent<PowerUp>();
+
         spawnPoints[0] = 1.0f;
         spawnPoints[1] = 2.0f;
         spawnPoints[2] = 3.0f;
+
+        //PowerUpControl = new PowerUp(); //(PowerUpObject, leftLastObject, rightLastObject);
         
+        //leftObjectY = leftLastObject.transform.position.y;
+        //rightObjectY = rightLastObject.transform.position.y;
         
 
 
@@ -46,6 +60,8 @@ public class Pooling : MonoBehaviour
             }
             
             leftLastObject = col.gameObject;
+            //leftObjectY = leftLastObject.transform.position.y;
+            
         }
         else if (col.gameObject.tag == "right")
         {
@@ -62,7 +78,16 @@ public class Pooling : MonoBehaviour
                 col.gameObject.transform.position = new Vector3(2.24f, rightY, 0f);
             }
             rightLastObject = col.gameObject;
+            //rightObjectY = rightLastObject.transform.position.y;
+        }
+        else if(col.gameObject.tag == "shield" || col.gameObject.tag == "reverse") //TODO: instead, check if tag exists in a predefined string array
+        {
+            col.gameObject.SetActive(false);
+            float randomFloat = Random.Range(20f, 45f);
+            PowerUpControl.Invoke("getRandomPosition", 2f); //change spawn time
+            //PowerUpControl.getRandomPosition();
         }
 
     }
+
 }

@@ -16,9 +16,14 @@ public class BallController : MonoBehaviour
     private bool rightBallMoving = false;
     private bool hitRightBall = false;
     private float rightBallDirection = -1;
+
+    public static bool isReversed;
+
     // Start is called before the first frame update
     void Start()
     {
+        isReversed = false;
+
         velocity = new Vector2(speed, 0f);
         //Application.targetFrameRate = 300;
         SetVsync0_120FPS();
@@ -40,8 +45,13 @@ public class BallController : MonoBehaviour
         {
             moveRightBall();
         }
+        
+    }
+
+    private void FixedUpdate()
+    {
         //left ball movement
-        if(hitLeftBall && !leftBallMoving)
+        if (hitLeftBall && !leftBallMoving)
         {
             leftBallRB.AddForce(velocity * leftBallDirection, ForceMode2D.Impulse);
             leftBallMoving = true;
@@ -76,11 +86,11 @@ public class BallController : MonoBehaviour
                     leftBallMoving = false;
                     leftBallDirection = 1;
                 }
-            }     
+            }
         }
 
 
-        
+
 
         //right ball movement
         if (hitRightBall && !rightBallMoving)
@@ -120,17 +130,23 @@ public class BallController : MonoBehaviour
                 }
             }
         }
-
     }
-    
 
     public void moveLeftBall()
     {
-        hitLeftBall = true;
+        if(isReversed == true) {
+            hitRightBall = true;
+        } else {
+            hitLeftBall = true;
+        }
     }
     public void moveRightBall()
     {
-        hitRightBall = true;
+        if(isReversed == true) {
+            hitLeftBall = true;
+        } else {
+            hitRightBall = true;
+        }
     }
     public void SetVsync0_120FPS() { QualitySettings.vSyncCount = 0; Application.targetFrameRate = 120; }
 }
