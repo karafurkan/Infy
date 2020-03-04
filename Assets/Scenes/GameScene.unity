@@ -1893,9 +1893,19 @@ MonoBehaviour:
   - 0
   - 0
   - 0
-  leftLastObject: {fileID: 2120047945}
-  rightLastObject: {fileID: 11657018}
+  leftLastObject: {fileID: 1941007014}
+  rightLastObject: {fileID: 1109635374}
   PowerUpObject: {fileID: 1947990314}
+  leftObstacleArray:
+  - {fileID: 130617761}
+  - {fileID: 2031710260}
+  - {fileID: 2120047945}
+  rightObstacleArray:
+  - {fileID: 857193705}
+  - {fileID: 2145651221}
+  - {fileID: 11657018}
+  minimumGap: 2.5
+  maximumGap: 5
 --- !u!114 &1637709556
 MonoBehaviour:
   m_ObjectHideFlags: 0
