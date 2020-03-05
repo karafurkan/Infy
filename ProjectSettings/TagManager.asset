@@ -13,6 +13,7 @@ TagManager:
   - shield
   - reverse
   - explosive
+  - reverse-direction
   layers:
   - Default
   - TransparentFX

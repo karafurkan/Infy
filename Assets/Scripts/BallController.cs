@@ -17,17 +17,30 @@ public class BallController : MonoBehaviour
     private bool hitRightBall = false;
     private float rightBallDirection = -1;
 
-    public static bool isReversed;
+    public static bool isReversedController;
+
+
+    // Reversed Direction
+    public static bool isReversedDirection;
+    public bool isMovingVertically = false;
+    private Vector2 verticalVelocity;
+    public static int verticalDirection = -1;
+    //
+
 
     // Start is called before the first frame update
     void Start()
     {
-        isReversed = false;
-
+        isReversedController = false;
+        isReversedDirection = false;
         velocity = new Vector2(speed, 0f);
         //Application.targetFrameRate = 300;
         SetVsync0_120FPS();
-        //leftBallRB.MovePosition(leftBallRB.position + velocity * Time.fixedDeltaTime);
+        //leftBallRB.MovePosition(leftBallRB.position + velocity * Time.fixedDeltaTime) 
+
+
+
+        verticalVelocity = new Vector2(0.0f, objectMover.speed);
 
     }
 
@@ -50,7 +63,44 @@ public class BallController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //left ball movement
+       LeftRightMovement();
+       UpDownMovemement();
+    }
+
+    private void UpDownMovemement() {
+        
+        if(isReversedDirection == true) {
+            leftBallRB.AddForce(verticalVelocity * verticalDirection, ForceMode2D.Impulse);
+            rightBallRB.AddForce(verticalVelocity * verticalDirection, ForceMode2D.Impulse);
+            isReversedController = false;
+            isMovingVertically = true;
+            isReversedDirection = false;
+        }
+
+        if (isMovingVertically == true) {
+            if (verticalDirection == -1) {
+                if(leftBallRB.transform.position.y <= -4.306f) {
+                    verticalDirection = 1;
+                    leftBallRB.AddForce(verticalVelocity * verticalDirection, ForceMode2D.Impulse);
+                    rightBallRB.AddForce(verticalVelocity * verticalDirection, ForceMode2D.Impulse);
+                    isMovingVertically = false;
+                }
+            } else {
+                if(leftBallRB.transform.position.y >= 4.306f) {
+                    verticalDirection = -1;
+                    leftBallRB.AddForce(verticalVelocity * verticalDirection, ForceMode2D.Impulse);
+                    rightBallRB.AddForce(verticalVelocity * verticalDirection, ForceMode2D.Impulse);
+                    isMovingVertically = false;
+                }
+            }
+        }
+
+    }
+
+
+
+    private void LeftRightMovement() {
+         //left ball movement
         if (hitLeftBall && !leftBallMoving)
         {
             leftBallRB.AddForce(velocity * leftBallDirection, ForceMode2D.Impulse);
@@ -88,9 +138,6 @@ public class BallController : MonoBehaviour
                 }
             }
         }
-
-
-
 
         //right ball movement
         if (hitRightBall && !rightBallMoving)
@@ -134,7 +181,7 @@ public class BallController : MonoBehaviour
 
     public void moveLeftBall()
     {
-        if(isReversed == true) {
+        if(isReversedController == true) {
             hitRightBall = true;
         } else {
             hitLeftBall = true;
@@ -142,7 +189,7 @@ public class BallController : MonoBehaviour
     }
     public void moveRightBall()
     {
-        if(isReversed == true) {
+        if(isReversedController == true) {
             hitLeftBall = true;
         } else {
             hitRightBall = true;

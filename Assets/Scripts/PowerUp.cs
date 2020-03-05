@@ -12,7 +12,7 @@ public class PowerUp : MonoBehaviour
     public static bool hasShield = false;
 
 
-    Pooling pooling;
+    public Pooling pooling;
     void Start()
     {
         pooling = GetComponent<Pooling>();
@@ -42,8 +42,8 @@ public class PowerUp : MonoBehaviour
         pooling.PowerUpObject.SetActive(true);
 
 
-        int randomPowerUp = Random.Range(0,3);  // To determine which power-up is it going to be.
-        //randomPowerUp = 2;  // Uncomment it to have all the powerups 'reverse'
+        int randomPowerUp = Random.Range(0,4);  // To determine which power-up is it going to be.
+        //randomPowerUp = 4; 
         if(randomPowerUp == 0) {
             pooling.PowerUpObject.tag = "shield";
             powerUpSpriteRenderer.color = Color.blue;
@@ -52,6 +52,9 @@ public class PowerUp : MonoBehaviour
             powerUpSpriteRenderer.color = Color.red;
         } else if (randomPowerUp == 2) {
             pooling.PowerUpObject.tag = "explosive";
+            powerUpSpriteRenderer.color = Color.yellow;
+        } else if (randomPowerUp == 4) {
+            pooling.PowerUpObject.tag = "reverse-direction";
             powerUpSpriteRenderer.color = Color.yellow;
         }
         

@@ -27,19 +27,22 @@ public class CollisionController : MonoBehaviour
             ActivateShield();
             Invoke("DeactivateShield", 5.0f);
             col.gameObject.SetActive(false);
-        }
-        else if (col.gameObject.tag == "reverse") {  
+        } else if (col.gameObject.tag == "reverse") {  
             setPowerUpTimer(5);
             Debug.Log("Hit reverse!");
             ActivateReverseMode();
             Invoke("DeactivateReverseMode", 5.0f);
             col.gameObject.SetActive(false);
-        }
-        else if (col.gameObject.tag == "explosive") { 
+        } else if (col.gameObject.tag == "explosive") { 
             Debug.Log("Hit explosive");
             col.gameObject.SetActive(false);
             PowerUpControl.ActivateExplosive();
-             PowerUpControl.Invoke("CreatePowerUp", 7f); //change spawn time
+            PowerUpControl.Invoke("CreatePowerUp", 7f); //change spawn time
+        } else if (col.gameObject.tag == "reverse-direction") { 
+            Debug.Log("Hit reverse direction");
+            col.gameObject.SetActive(false);
+            ActivateReverseDirection();
+            
         }
         if (col.gameObject.tag == "left" || col.gameObject.tag == "right") {  // Checks if the player hits to the obstacles.
             if(PowerUp.hasShield == false) {
@@ -49,7 +52,28 @@ public class CollisionController : MonoBehaviour
 
     }
 
-    void decreasePowerUpTimer(){
+    void ActivateReverseDirection() {
+        PowerUpControl.Invoke("CreatePowerUp", 10f); //change spawn time
+        objectMover.speedDirection = -objectMover.speedDirection;
+        if (BallController.verticalDirection == -1) {
+            PowerUpControl.pooling.InitializeObstacles(22f);
+            PowerUpControl.pooling.leftLastObject = PowerUpControl.pooling.leftObstacleArray[0];
+            PowerUpControl.pooling.rightLastObject = PowerUpControl.pooling.rightObstacleArray[0];
+        } else {
+            PowerUpControl.pooling.InitializeObstacles(-15f);
+        }
+
+        BallController.isReversedDirection = true;
+        if (BallController.verticalDirection == -1) {
+            topLimitObject.transform.position = new Vector3(topLimitObject.transform.position.x, -5.25f, 0f);
+        } else {
+            topLimitObject.transform.position = new Vector3(topLimitObject.transform.position.x, 5.25f, 0f);
+        }
+
+    }
+
+
+    void decreasePowerUpTimer() {
         if(powerUpTimer.text != "0") {
             powerUpTimer.text = (int.Parse(powerUpTimer.text) - 1).ToString();
             Invoke("decreasePowerUpTimer",1.0f);
@@ -64,11 +88,11 @@ public class CollisionController : MonoBehaviour
     }
 
     void ActivateReverseMode() {
-        BallController.isReversed = true;
+        BallController.isReversedController = true;
     }
 
     void DeactivateReverseMode() {
-        BallController.isReversed = false;
+        BallController.isReversedController = false;
         powerUpTimer.gameObject.SetActive(false);
         PowerUpControl.Invoke("CreatePowerUp", 7f); //change spawn time
     }
