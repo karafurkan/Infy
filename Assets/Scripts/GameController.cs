@@ -8,7 +8,7 @@ public class GameController : MonoBehaviour
 {
     const int resolutionX = 9;
     const int resolutionY = 16;
-    bool isPaused;
+    public static bool isPaused;
     public static bool isGameOver;
     
     public Button restartButton;

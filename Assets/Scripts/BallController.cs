@@ -181,19 +181,33 @@ public class BallController : MonoBehaviour
 
     public void moveLeftBall()
     {
-        if(isReversedController == true) {
-            hitRightBall = true;
-        } else {
-            hitLeftBall = true;
+        if(!GameController.isPaused)
+        {
+            if (isReversedController == true)
+            {
+                hitRightBall = true;
+            }
+            else
+            {
+                hitLeftBall = true;
+            }
         }
+        
     }
     public void moveRightBall()
     {
-        if(isReversedController == true) {
-            hitLeftBall = true;
-        } else {
-            hitRightBall = true;
+        if(!GameController.isPaused)
+        {
+            if (isReversedController == true)
+            {
+                hitLeftBall = true;
+            }
+            else
+            {
+                hitRightBall = true;
+            }
         }
+        
     }
     public void SetVsync0_120FPS() { QualitySettings.vSyncCount = 0; Application.targetFrameRate = 120; }
 }
