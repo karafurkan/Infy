@@ -10,7 +10,7 @@ public class GameController : MonoBehaviour
     const int resolutionY = 16;
     bool isPaused;
     public static bool isGameOver;
-
+    
     public Button restartButton;
     public Button returnMainMenuButton;
 
@@ -18,7 +18,6 @@ public class GameController : MonoBehaviour
     {
         float screenRatio = Screen.width*1f / Screen.height;
         float bestRatio = resolutionX*1f / resolutionY;
-        
         if (screenRatio <= bestRatio)
         {
             GetComponent<Camera>().rect = new Rect(0,(1f- screenRatio / bestRatio)/2f, 1, screenRatio / bestRatio);
@@ -41,7 +40,7 @@ public class GameController : MonoBehaviour
             if (isPaused == false) {
                 PauseGame();
             } else {
-                StartGame();
+                continueGame();
             }
         }  
         if (isGameOver == true) {          ///////// Bunu burada yapmak yerine aşağıda gameOver fonksiyonu yazıp CollisionController'de oyuncu yandığı zaman çağır
@@ -56,10 +55,16 @@ public class GameController : MonoBehaviour
         isPaused = true;
         //Disable scripts that still work while timescale is set to 0
     } 
+    public void continueGame()
+    {
+        Time.timeScale = 1;
+        isPaused = false;
+    } 
     public void StartGame()
     {
         Time.timeScale = 1;
         isPaused = false;
+        objectMover.speed = objectMover.initialSpeed;
         //enable the scripts again
     }
 
