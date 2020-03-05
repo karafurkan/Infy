@@ -12,6 +12,7 @@ TagManager:
   - test
   - shield
   - reverse
+  - explosive
   layers:
   - Default
   - TransparentFX

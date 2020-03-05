@@ -1979,10 +1979,12 @@ MonoBehaviour:
   rightLastObject: {fileID: 1109635374}
   PowerUpObject: {fileID: 1947990314}
   leftObstacleArray:
+  - {fileID: 1941007014}
   - {fileID: 130617761}
   - {fileID: 2031710260}
   - {fileID: 2120047945}
   rightObstacleArray:
+  - {fileID: 1109635374}
   - {fileID: 857193705}
   - {fileID: 2145651221}
   - {fileID: 11657018}

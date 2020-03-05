@@ -42,17 +42,25 @@ public class PowerUp : MonoBehaviour
         pooling.PowerUpObject.SetActive(true);
 
 
-        int randomPowerUp = Random.Range(0,2);  // To determine which power-up is it going to be.
-        //int randomPowerUp = 0;  // Uncomment it to have all the powerups 'reverse'
+        int randomPowerUp = Random.Range(0,3);  // To determine which power-up is it going to be.
+        //randomPowerUp = 2;  // Uncomment it to have all the powerups 'reverse'
         if(randomPowerUp == 0) {
             pooling.PowerUpObject.tag = "shield";
             powerUpSpriteRenderer.color = Color.blue;
-        } else {
+        } else if (randomPowerUp == 1){
             pooling.PowerUpObject.tag = "reverse";
             powerUpSpriteRenderer.color = Color.red;
+        } else if (randomPowerUp == 2) {
+            pooling.PowerUpObject.tag = "explosive";
+            powerUpSpriteRenderer.color = Color.yellow;
         }
         
      
+    }
+
+
+    public void ActivateExplosive() {
+        pooling.InitializeObstacles(-8.0f);
     }
 
 

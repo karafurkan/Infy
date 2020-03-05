@@ -35,8 +35,11 @@ public class CollisionController : MonoBehaviour
             Invoke("DeactivateReverseMode", 5.0f);
             col.gameObject.SetActive(false);
         }
-        else if (col.gameObject.tag == "test") { 
-
+        else if (col.gameObject.tag == "explosive") { 
+            Debug.Log("Hit explosive");
+            col.gameObject.SetActive(false);
+            PowerUpControl.ActivateExplosive();
+             PowerUpControl.Invoke("CreatePowerUp", 7f); //change spawn time
         }
         if (col.gameObject.tag == "left" || col.gameObject.tag == "right") {  // Checks if the player hits to the obstacles.
             if(PowerUp.hasShield == false) {
@@ -56,13 +59,11 @@ public class CollisionController : MonoBehaviour
 
     void setPowerUpTimer(int t) {
         powerUpTimer.text = t.ToString();
-        Debug.Log(powerUpTimer.text);
         powerUpTimer.gameObject.SetActive(true);
         Invoke("decreasePowerUpTimer",1.0f);
     }
 
     void ActivateReverseMode() {
-        Debug.Log("ACTIVATED REVERSE MODE");
         BallController.isReversed = true;
     }
 
@@ -75,7 +76,6 @@ public class CollisionController : MonoBehaviour
 
     void DeactivateShield() {
         PowerUp.hasShield = false;
-        Debug.Log("Deactivated!");
         powerUpTimer.gameObject.SetActive(false);
         PowerUpControl.Invoke("CreatePowerUp", 7f); //change spawn time
     }
