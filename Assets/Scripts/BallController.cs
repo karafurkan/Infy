@@ -9,6 +9,9 @@ public class BallController : MonoBehaviour
     private Vector2 velocity;
     public float speed;
 
+    const int resolutionX = 9;
+    const int resolutionY = 16;
+
     private bool leftBallMoving = false;
     private bool hitLeftBall = false;
     private int leftBallDirection = 1;
@@ -31,6 +34,18 @@ public class BallController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //fix resolution
+        float screenRatio = Screen.width * 1f / Screen.height;
+        float bestRatio = resolutionX * 1f / resolutionY;
+        if (screenRatio <= bestRatio)
+        {
+            GetComponent<Camera>().rect = new Rect(0, (1f - screenRatio / bestRatio) / 2f, 1, screenRatio / bestRatio);
+        }
+        else if (screenRatio > bestRatio)
+        {
+            GetComponent<Camera>().rect = new Rect((1f - bestRatio / screenRatio) / 2f, 0, bestRatio / screenRatio, 1);
+        }
+
         isReversedController = false;
         isReversedDirection = false;
         velocity = new Vector2(speed, 0f);

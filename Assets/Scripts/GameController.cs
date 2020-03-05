@@ -6,8 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    const int resolutionX = 9;
-    const int resolutionY = 16;
     public static bool isPaused;
     public static bool isGameOver;
     
@@ -16,20 +14,11 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-        float screenRatio = Screen.width*1f / Screen.height;
-        float bestRatio = resolutionX*1f / resolutionY;
-        if (screenRatio <= bestRatio)
-        {
-            GetComponent<Camera>().rect = new Rect(0,(1f- screenRatio / bestRatio)/2f, 1, screenRatio / bestRatio);
-        }else if(screenRatio > bestRatio)
-        {
-            GetComponent<Camera>().rect = new Rect((1f- bestRatio / screenRatio) /2f, 0, bestRatio / screenRatio, 1);
-        }
-
         isGameOver = false;
         isPaused = false;
         restartButton.gameObject.SetActive(false);
         returnMainMenuButton.gameObject.SetActive(false);
+
         StartGame();
     }
     void Update()
@@ -43,11 +32,13 @@ public class GameController : MonoBehaviour
                 continueGame();
             }
         }  
+        /*
         if (isGameOver == true) {          ///////// Bunu burada yapmak yerine aşağıda gameOver fonksiyonu yazıp CollisionController'de oyuncu yandığı zaman çağır
             restartButton.gameObject.SetActive(true);
             returnMainMenuButton.gameObject.SetActive(true);
             PauseGame();
         }
+        */
     }
     public void PauseGame()
     {
@@ -77,10 +68,16 @@ public class GameController : MonoBehaviour
         isGameOver = false;
 	}
 
+    public void GameOver()
+    {
+        restartButton.gameObject.SetActive(true);
+        returnMainMenuButton.gameObject.SetActive(true);
+        PauseGame();
+    }
     
    
     public void returnMainMenuClicked() {
-        Debug.Log("returnMainMenuClicked called!");
+        //Debug.Log("returnMainMenuClicked called!");
         SceneManager.LoadScene("MainMenuScene");
     }
 
