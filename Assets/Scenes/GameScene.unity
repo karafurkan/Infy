@@ -1472,6 +1472,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerUpTimer: {fileID: 557962981}
+  topLimitObject: {fileID: 1637709551}
+  PowerUpControl: {fileID: 0}
 --- !u!1 &1303165920
 GameObject:
   m_ObjectHideFlags: 0
@@ -1986,6 +1988,7 @@ MonoBehaviour:
   - {fileID: 11657018}
   minimumGap: 2.5
   maximumGap: 4
+  PowerUpControl: {fileID: 0}
 --- !u!114 &1637709556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2330,6 +2333,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerUpTimer: {fileID: 557962981}
+  topLimitObject: {fileID: 1637709551}
+  PowerUpControl: {fileID: 0}
 --- !u!1 &1787687722
 GameObject:
   m_ObjectHideFlags: 0

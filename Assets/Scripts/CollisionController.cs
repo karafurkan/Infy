@@ -7,9 +7,11 @@ public class CollisionController : MonoBehaviour
 {
 
     public Text powerUpTimer;
+    public GameObject topLimitObject;
+    public PowerUp PowerUpControl;
 
     void Start() {
-
+        PowerUpControl = topLimitObject.GetComponent<PowerUp>();
 
     }
 
@@ -67,6 +69,7 @@ public class CollisionController : MonoBehaviour
     void DeactivateReverseMode() {
         BallController.isReversed = false;
         powerUpTimer.gameObject.SetActive(false);
+        PowerUpControl.Invoke("CreatePowerUp", 7f); //change spawn time
     }
 
 
@@ -74,6 +77,7 @@ public class CollisionController : MonoBehaviour
         PowerUp.hasShield = false;
         Debug.Log("Deactivated!");
         powerUpTimer.gameObject.SetActive(false);
+        PowerUpControl.Invoke("CreatePowerUp", 7f); //change spawn time
     }
 
     void ActivateShield() {

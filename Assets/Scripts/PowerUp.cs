@@ -45,11 +45,9 @@ public class PowerUp : MonoBehaviour
         int randomPowerUp = Random.Range(0,2);  // To determine which power-up is it going to be.
         //int randomPowerUp = 0;  // Uncomment it to have all the powerups 'reverse'
         if(randomPowerUp == 0) {
-            //Debug.Log("SHIELD POWERUP CREATED");
             pooling.PowerUpObject.tag = "shield";
             powerUpSpriteRenderer.color = Color.blue;
         } else {
-            //Debug.Log("REVERSE POWERUP CREATED");
             pooling.PowerUpObject.tag = "reverse";
             powerUpSpriteRenderer.color = Color.red;
         }

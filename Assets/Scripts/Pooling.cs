@@ -17,7 +17,7 @@ public class Pooling : MonoBehaviour
     public float maximumGap;
 
 
-    private PowerUp PowerUpControl;
+    public PowerUp PowerUpControl;
     /*
     public static float leftObjectY;   
     public static float rightObjectY;
@@ -32,7 +32,7 @@ public class Pooling : MonoBehaviour
         spawnPoints[1] = 2.0f;
         spawnPoints[2] = 3.0f;
 
-        InitializeObstacles();
+        InitializeObstacles(-2);
     }
 
 
@@ -77,22 +77,22 @@ public class Pooling : MonoBehaviour
         {
             col.gameObject.SetActive(false);
             float randomFloat = Random.Range(20f, 45f);
-            PowerUpControl.Invoke("CreatePowerUp", 2f); //change spawn time
+            PowerUpControl.Invoke("CreatePowerUp", 7f); //change spawn time
         }
 
     }
 
-    private void InitializeObstacles()
+    private void InitializeObstacles(float positionY)
     {
         //initialize left obstacles
         int selection = Random.Range(0, 2); 
         if (selection == 0)
         {
-            leftLastObject.transform.position = new Vector3(-2.1f, -2, 0f); // Left-left
+            leftLastObject.transform.position = new Vector3(-2.1f, positionY, 0f); // Left-left
         }
         else
         {
-            leftLastObject.transform.position = new Vector3(-0.67f, -2, 0f); // Left-right
+            leftLastObject.transform.position = new Vector3(-0.67f, positionY, 0f); // Left-right
         }
         
         foreach (GameObject go in leftObstacleArray)
@@ -116,11 +116,11 @@ public class Pooling : MonoBehaviour
         selection = Random.Range(0, 2);
         if (selection == 0)
         {
-            rightLastObject.transform.position = new Vector3(0.59f, -2, 0f);
+            rightLastObject.transform.position = new Vector3(0.59f, positionY, 0f);
         }
         else
         {
-            rightLastObject.transform.position = new Vector3(2.24f, -2, 0f);
+            rightLastObject.transform.position = new Vector3(2.24f, positionY, 0f);
         }
 
         foreach (GameObject go in rightObstacleArray)

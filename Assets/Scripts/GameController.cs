@@ -40,7 +40,7 @@ public class GameController : MonoBehaviour
             if (isPaused == false) {
                 PauseGame();
             } else {
-                StartGame();
+                continueGame();
             }
         }  
         if (isGameOver == true) {          ///////// Bunu burada yapmak yerine aşağıda gameOver fonksiyonu yazıp CollisionController'de oyuncu yandığı zaman çağır
@@ -55,10 +55,16 @@ public class GameController : MonoBehaviour
         isPaused = true;
         //Disable scripts that still work while timescale is set to 0
     } 
+    public void continueGame()
+    {
+        Time.timeScale = 1;
+        isPaused = false;
+    } 
     public void StartGame()
     {
         Time.timeScale = 1;
         isPaused = false;
+        objectMover.speed = objectMover.initialSpeed;
         //enable the scripts again
     }
 
