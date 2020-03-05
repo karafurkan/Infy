@@ -65,6 +65,8 @@ public class GameController : MonoBehaviour
         Time.timeScale = 1;
         isPaused = false;
         objectMover.speed = objectMover.initialSpeed;
+        objectMover.speedDirection = -1;
+        BallController.verticalDirection = -1;
         //enable the scripts again
     }
 

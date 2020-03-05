@@ -42,7 +42,7 @@ public class PowerUp : MonoBehaviour
         pooling.PowerUpObject.SetActive(true);
 
 
-        int randomPowerUp = Random.Range(0,4);  // To determine which power-up is it going to be.
+        int randomPowerUp = Random.Range(0,5);  // To determine which power-up is it going to be.
         //randomPowerUp = 4; 
         if(randomPowerUp == 0) {
             pooling.PowerUpObject.tag = "shield";
