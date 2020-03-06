@@ -433,6 +433,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backButton: {fileID: 276632385}
+  highScoreText: {fileID: 1756543946}
+  highScores: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
 --- !u!1 &949748634
 GameObject:
   m_ObjectHideFlags: 0
@@ -644,9 +646,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'HIGHSCORES
-
-    0'
+  m_Text: HIGHSCORES
 --- !u!222 &1756543947
 CanvasRenderer:
   m_ObjectHideFlags: 0
