@@ -10,6 +10,7 @@ public class CollisionController : MonoBehaviour
     public GameObject topLimitObject;
     public PowerUp PowerUpControl;
     public GameController gameController;
+    public float currentSpeed;
     void Start() {
         PowerUpControl = topLimitObject.GetComponent<PowerUp>();
         gameController = topLimitObject.GetComponent<GameController>();
@@ -43,6 +44,11 @@ public class CollisionController : MonoBehaviour
             col.gameObject.SetActive(false);
             ActivateReverseDirection();
             
+        } else if (col.gameObject.tag == "boost") { 
+            col.gameObject.SetActive(false);
+            ActivateBoost();
+            Invoke("DeactivateBoost", 2.0f);
+            
         }
         if (col.gameObject.tag == "left" || col.gameObject.tag == "right") {  // Checks if the player hits to the obstacles.
             if(PowerUp.hasShield == false) {
@@ -51,6 +57,18 @@ public class CollisionController : MonoBehaviour
             }
         }
 
+    }
+
+    void ActivateBoost() {
+        PowerUpControl.Invoke("CreatePowerUp", 10f); //change spawn time
+        PowerUp.hasShield = true;
+        currentSpeed = objectMover.speed;
+        objectMover.speed = 20f;
+    }
+
+    void DeactivateBoost() {
+        Invoke("SetShieldOff", 1.0f);
+        objectMover.speed = currentSpeed;
     }
 
     void ActivateReverseDirection() {
@@ -66,9 +84,9 @@ public class CollisionController : MonoBehaviour
 
         BallController.isReversedDirection = true;
         if (BallController.verticalDirection == -1) {
-            topLimitObject.transform.position = new Vector3(topLimitObject.transform.position.x, -5.25f, 0f);
+            topLimitObject.transform.position = new Vector3(topLimitObject.transform.position.x, -7.56f, 0f);
         } else {
-            topLimitObject.transform.position = new Vector3(topLimitObject.transform.position.x, 5.25f, 0f);
+            topLimitObject.transform.position = new Vector3(topLimitObject.transform.position.x, 7.56f, 0f);
         }
 
     }
@@ -100,13 +118,17 @@ public class CollisionController : MonoBehaviour
 
 
     void DeactivateShield() {
-        PowerUp.hasShield = false;
+        SetShieldOff();
         powerUpTimer.gameObject.SetActive(false);
         PowerUpControl.Invoke("CreatePowerUp", 7f); //change spawn time
     }
 
     void ActivateShield() {
         PowerUp.hasShield = true;
+    }
+
+    void SetShieldOff() {
+        PowerUp.hasShield = false;
     }
 
 

@@ -6,7 +6,7 @@ TextureImporter:
     21300002: button_pause
     21300004: button_play
     21300006: Png_3
-    21300008: Png_4
+    21300008: seperator
     21300010: Png_5
     21300012: Png_6
     21300014: obstacle_chain
@@ -31,6 +31,7 @@ TextureImporter:
     21300052: back_space
     21300054: Png_27
     21300056: back_black
+    21300058: Png_1
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -226,7 +227,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Png_4
+      name: seperator
       rect:
         serializedVersion: 2
         x: 1991
@@ -721,6 +722,26 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: f2fb3d1e5eec74816be2a06deb084a0b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Png_1
+      rect:
+        serializedVersion: 2
+        x: 1974
+        y: 3962
+        width: 18
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7fa77728af36407a9deb7ffe1f9cd69
       vertices: []
       indices: 
       edges: []
