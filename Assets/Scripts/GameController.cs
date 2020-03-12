@@ -15,6 +15,8 @@ public class GameController : MonoBehaviour
     public ArrayList highScores = new ArrayList();
     int highScoreIndex;
 
+    public Button PauseButton;
+
     void Start()
     {
         isGameOver = false;
@@ -39,15 +41,6 @@ public class GameController : MonoBehaviour
     }
     void Update()
     {
-        if(Input.GetKeyDown (KeyCode.Escape)) 
-        {
-            //Debug.Log("Esc is pressed!");
-            if (isPaused == false) {
-                PauseGame();
-            } else {
-                continueGame();
-            }
-        }  
         /*
         if (isGameOver == true) {          ///////// Bunu burada yapmak yerine aşağıda gameOver fonksiyonu yazıp CollisionController'de oyuncu yandığı zaman çağır
             restartButton.gameObject.SetActive(true);
@@ -56,13 +49,21 @@ public class GameController : MonoBehaviour
         }
         */
     }
+
+    public void PauseButtonClicked() {
+        if (isPaused == false) {
+            PauseGame();
+        } else {
+            ContinueGame();
+        }
+    }
+
     public void PauseGame()
     {
         Time.timeScale = 0;
         isPaused = true;
-        //Disable scripts that still work while timescale is set to 0
     } 
-    public void continueGame()
+    public void ContinueGame()
     {
         Time.timeScale = 1;
         isPaused = false;
@@ -124,6 +125,7 @@ public class GameController : MonoBehaviour
         restartButton.gameObject.SetActive(true);
         returnMainMenuButton.gameObject.SetActive(true);
         PauseGame();
+        PauseButton.gameObject.SetActive(false);
         
 
     }

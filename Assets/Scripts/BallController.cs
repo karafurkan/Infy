@@ -94,14 +94,14 @@ public class BallController : MonoBehaviour
 
         if (isMovingVertically == true) {
             if (verticalDirection == -1) {
-                if(leftBallRB.transform.position.y <= -4.306f) {
+                if(leftBallRB.transform.position.y <= -3.83f) {
                     verticalDirection = 1;
                     leftBallRB.AddForce(verticalVelocity * verticalDirection, ForceMode2D.Impulse);
                     rightBallRB.AddForce(verticalVelocity * verticalDirection, ForceMode2D.Impulse);
                     isMovingVertically = false;
                 }
             } else {
-                if(leftBallRB.transform.position.y >= 4.306f) {
+                if(leftBallRB.transform.position.y >= 3.83f) {
                     verticalDirection = -1;
                     leftBallRB.AddForce(verticalVelocity * verticalDirection, ForceMode2D.Impulse);
                     rightBallRB.AddForce(verticalVelocity * verticalDirection, ForceMode2D.Impulse);
