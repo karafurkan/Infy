@@ -44,7 +44,7 @@ public class PowerUp : MonoBehaviour
 
 
         int randomPowerUp = Random.Range(0,5);  // To determine which power-up is it going to be.
-        randomPowerUp = 4; 
+       // randomPowerUp = 3; 
         if(randomPowerUp == 0) {
             pooling.PowerUpObject.tag = "shield";
             powerUpSpriteRenderer.color = Color.blue;
