@@ -60,7 +60,6 @@ public class CollisionController : MonoBehaviour
     }
 
     void ActivateBoost() {
-        PowerUpControl.Invoke("CreatePowerUp", 10f); //change spawn time
         PowerUp.hasShield = true;
         currentSpeed = objectMover.speed;
         objectMover.speed = 20f;
@@ -69,6 +68,7 @@ public class CollisionController : MonoBehaviour
     void DeactivateBoost() {
         Invoke("SetShieldOff", 1.0f);
         objectMover.speed = currentSpeed;
+        PowerUpControl.Invoke("CreatePowerUp", 7f); 
     }
 
     void ActivateReverseDirection() {
