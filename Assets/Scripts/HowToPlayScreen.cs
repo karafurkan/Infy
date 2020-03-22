@@ -39,6 +39,7 @@ public class HowToPlayScreen : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1;
         rightButton.gameObject.SetActive(false);
     }
 
