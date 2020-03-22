@@ -3,59 +3,67 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class GameController : MonoBehaviour
 {
-    const int resolutionX = 9;
-    const int resolutionY = 16;
-    bool isPaused;
+    public static bool isPaused;
     public static bool isGameOver;
     
     public Button restartButton;
     public Button returnMainMenuButton;
+    public ArrayList highScores = new ArrayList();
+    int highScoreIndex;
+
+    public Button PauseButton;
 
     void Start()
     {
-        float screenRatio = Screen.width*1f / Screen.height;
-        float bestRatio = resolutionX*1f / resolutionY;
-        if (screenRatio <= bestRatio)
-        {
-            GetComponent<Camera>().rect = new Rect(0,(1f- screenRatio / bestRatio)/2f, 1, screenRatio / bestRatio);
-        }else if(screenRatio > bestRatio)
-        {
-            GetComponent<Camera>().rect = new Rect((1f- bestRatio / screenRatio) /2f, 0, bestRatio / screenRatio, 1);
-        }
-
         isGameOver = false;
         isPaused = false;
         restartButton.gameObject.SetActive(false);
         returnMainMenuButton.gameObject.SetActive(false);
+
+        string scoreString = "score";
+        for (highScoreIndex = 0; highScoreIndex < 10; ++highScoreIndex)
+        {
+            if (PlayerPrefs.HasKey(scoreString + highScoreIndex))
+            {
+                highScores.Add(PlayerPrefs.GetInt(scoreString + highScoreIndex));
+            }
+            else
+            {
+                break;
+            }
+        }
+
         StartGame();
     }
     void Update()
     {
-        if(Input.GetKeyDown (KeyCode.Escape)) 
-        {
-            //Debug.Log("Esc is pressed!");
-            if (isPaused == false) {
-                PauseGame();
-            } else {
-                continueGame();
-            }
-        }  
+        /*
         if (isGameOver == true) {          ///////// Bunu burada yapmak yerine aşağıda gameOver fonksiyonu yazıp CollisionController'de oyuncu yandığı zaman çağır
             restartButton.gameObject.SetActive(true);
             returnMainMenuButton.gameObject.SetActive(true);
             PauseGame();
         }
+        */
     }
+
+    public void PauseButtonClicked() {
+        if (isPaused == false) {
+            PauseGame();
+        } else {
+            ContinueGame();
+        }
+    }
+
     public void PauseGame()
     {
         Time.timeScale = 0;
         isPaused = true;
-        //Disable scripts that still work while timescale is set to 0
     } 
-    public void continueGame()
+    public void ContinueGame()
     {
         Time.timeScale = 1;
         isPaused = false;
@@ -65,6 +73,9 @@ public class GameController : MonoBehaviour
         Time.timeScale = 1;
         isPaused = false;
         objectMover.speed = objectMover.initialSpeed;
+        objectMover.speedDirection = -1;
+        BallController.verticalDirection = -1;
+        Score.score = 0;
         //enable the scripts again
     }
 
@@ -75,11 +86,66 @@ public class GameController : MonoBehaviour
         isGameOver = false;
 	}
 
+    public void GameOver()
+    {
+        //high score arrangement
+        if (highScores.Count > 0)
+        {
+            if (highScores.Count >= 10) //highScores has 10 elements
+            {
+                for(int x = 0;x<10;++x)
+                {
+                    Debug.Log(highScores[x]);
+                }
+                int minValue = (int)GetMinValue(highScores);
+                if (Score.score > minValue)
+                {
+                    Debug.Log("Min value found: " + minValue + "\nPlayerpref change: score" + highScores.IndexOf(minValue) + "\nhighScores[highScores.IndexOf(minValue)]: " + highScores[highScores.IndexOf(minValue)]);
+                    for (int x = 0; x < 10; ++x)
+                    {
+                        Debug.Log(highScores[x]);
+                    }
+                    PlayerPrefs.SetInt("score" + highScores.IndexOf(minValue), (int)Score.score);
+                    highScores[highScores.IndexOf(minValue)] = (int)Score.score;
+                }
+            }
+            else //highScores has less than 10 elements
+            {
+                PlayerPrefs.SetInt("score" + highScores.Count, (int)Score.score);
+                highScores.Add((int)Score.score);
+            }
+
+        }
+        else //highScores is empty
+        {
+            PlayerPrefs.SetInt("score0", (int)Score.score);
+            highScores.Add((int)Score.score);
+        }
+        PlayerPrefs.Save();
+        restartButton.gameObject.SetActive(true);
+        returnMainMenuButton.gameObject.SetActive(true);
+        PauseGame();
+        PauseButton.gameObject.SetActive(false);
+        
+
+    }
     
    
     public void returnMainMenuClicked() {
-        Debug.Log("returnMainMenuClicked called!");
+        //Debug.Log("returnMainMenuClicked called!");
         SceneManager.LoadScene("MainMenuScene");
+    }
+
+    private object GetMinValue(ArrayList arrList)
+
+    {
+
+        ArrayList sortArrayList = new ArrayList(arrList);
+
+        sortArrayList.Sort();
+
+        return sortArrayList[0];
+
     }
 
 }

@@ -8,6 +8,7 @@ public class objectMover : MonoBehaviour
 {
     public static float initialSpeed = 2.5f;
     public static float speed;
+    public static float speedDirection = -1;
 
     // Start is called before the first frame update
     void Start() {
@@ -21,7 +22,7 @@ public class objectMover : MonoBehaviour
     }
 
     void MoveObstacle() {
-        transform.Translate(0, speed * Time.deltaTime, 0);
+        transform.Translate(0, -(speedDirection * speed * Time.deltaTime), 0);
     }
 
     void AdjustSpeed() {

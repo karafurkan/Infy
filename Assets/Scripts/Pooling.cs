@@ -44,7 +44,8 @@ public class Pooling : MonoBehaviour
         if (col.gameObject.tag == "left")
         {
             float leftRandomInt = Random.Range(minimumGap,maximumGap);
-            float leftY = leftLastObject.transform.position.y - leftRandomInt;
+            float leftY = leftLastObject.transform.position.y + (objectMover.speedDirection)*leftRandomInt;
+            
             int selection = Random.Range(0, 2);
             if (selection == 0){
                 col.gameObject.transform.position = new Vector3(-2.1f, leftY, 0f);
@@ -61,7 +62,7 @@ public class Pooling : MonoBehaviour
         {
             
             float rightRandomInt = Random.Range(minimumGap,maximumGap);
-            float rightY = rightLastObject.transform.position.y - rightRandomInt;    
+            float rightY = rightLastObject.transform.position.y + (objectMover.speedDirection)*rightRandomInt;
             int selection = Random.Range(0, 2);
             if (selection == 0)
             {
@@ -74,7 +75,7 @@ public class Pooling : MonoBehaviour
             rightLastObject = col.gameObject;
             //rightObjectY = rightLastObject.transform.position.y;
         }
-        else if(col.gameObject.tag == "shield" || col.gameObject.tag == "reverse" || col.gameObject.tag == "explosive"  ) //TODO: instead, check if tag exists in a predefined string array
+        else if(col.gameObject.tag == "shield" || col.gameObject.tag == "reverse" || col.gameObject.tag == "explosive" || col.gameObject.tag == "reverse-direction" || col.gameObject.tag == "boost") //TODO: instead, check if tag exists in a predefined string array
         {
             col.gameObject.SetActive(false);
             float randomFloat = Random.Range(20f, 45f);

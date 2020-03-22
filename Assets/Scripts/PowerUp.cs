@@ -12,7 +12,7 @@ public class PowerUp : MonoBehaviour
     public static bool hasShield = false;
 
 
-    Pooling pooling;
+    public Pooling pooling;
     void Start()
     {
         pooling = GetComponent<Pooling>();
@@ -28,6 +28,7 @@ public class PowerUp : MonoBehaviour
     public void CreatePowerUp() {
         int pos = Random.Range(0,4);
         float spawnGap = Random.Range(1f, 2f);
+        spawnGap = spawnGap * -(objectMover.speedDirection);
         
         
         if (spawnPoints[pos] < 0f) {
@@ -42,8 +43,8 @@ public class PowerUp : MonoBehaviour
         pooling.PowerUpObject.SetActive(true);
 
 
-        int randomPowerUp = Random.Range(0,3);  // To determine which power-up is it going to be.
-        //randomPowerUp = 2;  // Uncomment it to have all the powerups 'reverse'
+        int randomPowerUp = Random.Range(0,5);  // To determine which power-up is it going to be.
+        //randomPowerUp = 4; 
         if(randomPowerUp == 0) {
             pooling.PowerUpObject.tag = "shield";
             powerUpSpriteRenderer.color = Color.blue;
@@ -53,14 +54,30 @@ public class PowerUp : MonoBehaviour
         } else if (randomPowerUp == 2) {
             pooling.PowerUpObject.tag = "explosive";
             powerUpSpriteRenderer.color = Color.yellow;
-        }
+        } else if (randomPowerUp == 3) {
+            pooling.PowerUpObject.tag = "reverse-direction";
+            powerUpSpriteRenderer.color = Color.green;
+        } else if (randomPowerUp == 4) {
+            pooling.PowerUpObject.tag = "boost";
+            powerUpSpriteRenderer.color = Color.white;
+        } 
         
      
     }
 
 
     public void ActivateExplosive() {
-        pooling.InitializeObstacles(-8.0f);
+        if(BallController.verticalDirection == -1)
+        {
+            pooling.InitializeObstacles(-8.0f);
+        }
+        else
+        {
+            pooling.InitializeObstacles(15f);
+            pooling.leftLastObject = pooling.leftObstacleArray[0];
+            pooling.rightLastObject = pooling.rightObstacleArray[0];
+        }
+            
     }
 
 
