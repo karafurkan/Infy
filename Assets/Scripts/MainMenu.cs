@@ -10,7 +10,7 @@ public class MainMenu : MonoBehaviour
     public Button startGameButton;
     public Button highScoresButton;
     public Button creditsButton;
-
+    public Button howToPlayButton;
     void Start()
     {
         
@@ -36,4 +36,9 @@ public class MainMenu : MonoBehaviour
     public void creditsButtonClicked() {
         SceneManager.LoadScene("CreditsScene");
     }
+
+    public void howToPlayButtonClicked() {
+        SceneManager.LoadScene("HowToPlayScene");
+    }
+
 }
