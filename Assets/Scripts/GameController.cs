@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using System.Net;
+using System;
+using UnityEngine.Networking;
 
 public class GameController : MonoBehaviour
 {
@@ -12,10 +15,11 @@ public class GameController : MonoBehaviour
     
     public Button restartButton;
     public Button returnMainMenuButton;
-    public ArrayList highScores = new ArrayList();
-    int highScoreIndex;
+    public int highScore;
 
     public Button PauseButton;
+
+    private const string API_KEY = "PrGvxpGqaHhRUWSxh70zq43ExqhIXhhW";
 
     void Start()
     {
@@ -24,18 +28,15 @@ public class GameController : MonoBehaviour
         restartButton.gameObject.SetActive(false);
         returnMainMenuButton.gameObject.SetActive(false);
 
-        string scoreString = "score";
-        for (highScoreIndex = 0; highScoreIndex < 10; ++highScoreIndex)
+        if (PlayerPrefs.HasKey("score"))
         {
-            if (PlayerPrefs.HasKey(scoreString + highScoreIndex))
-            {
-                highScores.Add(PlayerPrefs.GetInt(scoreString + highScoreIndex));
-            }
-            else
-            {
-                break;
-            }
+            highScore = PlayerPrefs.GetInt("score");
         }
+        else
+        {
+            highScore = 0;
+        }
+            
 
         StartGame();
     }
@@ -88,6 +89,18 @@ public class GameController : MonoBehaviour
 
     public void GameOver()
     {
+        if(Score.score > highScore)
+        {
+            PlayerPrefs.SetInt("score", (int)Score.score);
+            highScore = (int)Score.score;
+            if (PlayerPrefs.HasKey("player_name") && (Application.internetReachability != NetworkReachability.NotReachable))
+            {
+                List<IMultipartFormSection> formData = new List<IMultipartFormSection>();
+                UnityWebRequest www = UnityWebRequest.Post(String.Format("http://infy-app.herokuapp.com/api/score?name={0}&score={1}&key={2}", PlayerPrefs.GetString("player_name"), highScore, API_KEY),formData);
+                www.SendWebRequest();
+            }
+        }
+        /*
         //high score arrangement
         if (highScores.Count > 0)
         {
@@ -122,6 +135,7 @@ public class GameController : MonoBehaviour
             highScores.Add((int)Score.score);
         }
         PlayerPrefs.Save();
+        */
         restartButton.gameObject.SetActive(true);
         returnMainMenuButton.gameObject.SetActive(true);
         PauseGame();
