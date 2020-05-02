@@ -12,7 +12,8 @@ public class HighScoresScript : MonoBehaviour
 {
     
     public Button backButton;
-    public Text highScoreText;
+    public Text highScoreNameText;
+    public Text highScoreScoreText;
     public HighScoreInfo highScores;
     public InputField inputField;
     public Button SubmitButton;
@@ -130,8 +131,9 @@ public class HighScoresScript : MonoBehaviour
         }
         
         int i = 0;
-        highScoreText.text = "HIGHSCORES\n";
-        
+        highScoreNameText.text = "NAME\n\n";
+        highScoreScoreText.text = "SCORE\n\n";
+
         highScores = GetHighScores();
 
         foreach (Player p in highScores.message)
@@ -140,10 +142,12 @@ public class HighScoresScript : MonoBehaviour
             {
                 break;
             }
-            highScoreText.text += p.name + ": " + p.score + "\n";
+            highScoreNameText.text += (i + 1) + ") " + p.name + "\n";
+            highScoreScoreText.text += p.score + "\n";
             ++i;
         }
-        highScoreText.text += "\n" + localName + ": " + localHighScore + "\n";
+        highScoreNameText.text += "\n" + localName + "\n";
+        highScoreScoreText.text += "\n" + localHighScore + "\n";
     }
 
 }
