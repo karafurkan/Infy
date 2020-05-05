@@ -1,14 +1,11 @@
 fileFormatVersion: 2
-guid: b7bcb8da8d5bd4e41938488e69d2135d
+guid: 554ee9f883e559c44aeeaf0475a21518
 TextureImporter:
   fileIDToRecycleName:
-    21300000: "giris\u2560\xBA ekran\u2500\u2592 taslak_0"
-    21300002: start_button
-    21300004: "giris\u2560\xBA ekran\u2500\u2592 taslak_2"
-    21300006: highscore_button
-    21300008: credits_button
-    21300010: howtoplay_button
-    21300012: start_button2
+    21300000: pause_background
+    21300002: paused_revize_0
+    21300004: paused_text
+    21300006: text_background
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -124,13 +121,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "giris\u2560\xBA ekran\u2500\u2592 taslak_0"
+      name: pause_background
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 750
-        height: 1334
+        x: 1610
+        y: 2026
+        width: 224
+        height: 368
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -138,19 +135,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f1ffcabd7d6128548a62e86985cc05f8
+      spriteID: fe676489089a65e4ba20aa12206bed19
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: start_button
+      name: paused_revize_0
       rect:
         serializedVersion: 2
-        x: 968
-        y: 856
-        width: 299
-        height: 131
+        x: 2057
+        y: 1775
+        width: 584
+        height: 635
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,19 +155,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 204ae360d9d31bb4291e98051495700d
+      spriteID: a5400dbd2bbc9a540b7288f75b4f6353
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "giris\u2560\xBA ekran\u2500\u2592 taslak_2"
+      name: paused_text
       rect:
         serializedVersion: 2
-        x: 777
-        y: 991
-        width: 279
-        height: 315
+        x: 2673
+        y: 2199
+        width: 535
+        height: 204
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,87 +175,27 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 919d260cc32da4748bc72d1634e3d3c9
+      spriteID: 9aae35922873007439e3106ea0d409b5
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: highscore_button
+      name: text_background
       rect:
         serializedVersion: 2
-        x: 962
-        y: 683
-        width: 254
-        height: 139
+        x: 2670
+        y: 1915
+        width: 465
+        height: 100
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d640ed81465f8bb4e83d992239735d5b
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: credits_button
-      rect:
-        serializedVersion: 2
-        x: 809
-        y: 533
-        width: 111
-        height: 115
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 750a866a357454840a775cdd67ea8b85
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: howtoplay_button
-      rect:
-        serializedVersion: 2
-        x: 804
-        y: 697
-        width: 115
-        height: 111
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7727530ef80c2aa498f779d0385a2676
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: start_button2
-      rect:
-        serializedVersion: 2
-        x: 965
-        y: 854
-        width: 307
-        height: 134
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 90654baee99ce8a4c8b7ab10b175a4ff
+      spriteID: 302b9c2a586852044bfd027308b4a9c3
       vertices: []
       indices: 
       edges: []
@@ -266,7 +203,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 3759cd9f5ed8aae459bd07da6849dce0
+    spriteID: d755956610982b5419e8c7e5f73c72d0
     vertices: []
     indices: 
     edges: []

@@ -1,14 +1,15 @@
 fileFormatVersion: 2
-guid: b7bcb8da8d5bd4e41938488e69d2135d
+guid: 3e5bf24e96ebf7e4b877b3e5b1c6d0cf
 TextureImporter:
   fileIDToRecycleName:
-    21300000: "giris\u2560\xBA ekran\u2500\u2592 taslak_0"
-    21300002: start_button
-    21300004: "giris\u2560\xBA ekran\u2500\u2592 taslak_2"
-    21300006: highscore_button
-    21300008: credits_button
-    21300010: howtoplay_button
-    21300012: start_button2
+    21300000: power-up-design_0
+    21300002: power-up-design_1
+    21300004: power-up-design_2
+    21300006: power-up-design_3
+    21300008: power-up-design_4
+    21300010: power-up-design_5
+    21300012: power-up-design_6
+    21300014: power-up-design_7
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -124,141 +125,161 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "giris\u2560\xBA ekran\u2500\u2592 taslak_0"
+      name: power-up-design_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 750
-        height: 1334
+        x: 40
+        y: 352
+        width: 167
+        height: 164
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f1ffcabd7d6128548a62e86985cc05f8
+      spriteID: f3a744df8fe644e4abf3145e56fc9a43
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: start_button
+      name: power-up-design_1
       rect:
         serializedVersion: 2
-        x: 968
-        y: 856
-        width: 299
-        height: 131
+        x: 220
+        y: 348
+        width: 166
+        height: 164
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 204ae360d9d31bb4291e98051495700d
+      spriteID: c3ff034ddac3efb4593bce889be6a214
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "giris\u2560\xBA ekran\u2500\u2592 taslak_2"
+      name: power-up-design_2
       rect:
         serializedVersion: 2
-        x: 777
-        y: 991
-        width: 279
-        height: 315
+        x: 413
+        y: 358
+        width: 165
+        height: 165
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 919d260cc32da4748bc72d1634e3d3c9
+      spriteID: affdacb790c494b42a49cf41aff8086d
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: highscore_button
+      name: power-up-design_3
       rect:
         serializedVersion: 2
-        x: 962
-        y: 683
-        width: 254
-        height: 139
+        x: 590
+        y: 350
+        width: 179
+        height: 176
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d640ed81465f8bb4e83d992239735d5b
+      spriteID: 64d0f1c52e6e1c049be07e8bff49ef8f
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: credits_button
+      name: power-up-design_4
       rect:
         serializedVersion: 2
-        x: 809
-        y: 533
-        width: 111
-        height: 115
+        x: 33
+        y: 175
+        width: 165
+        height: 164
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 750a866a357454840a775cdd67ea8b85
+      spriteID: edb299cf55e5c6a4480e10dbadb19d84
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: howtoplay_button
+      name: power-up-design_5
       rect:
         serializedVersion: 2
-        x: 804
-        y: 697
-        width: 115
-        height: 111
+        x: 202
+        y: 165
+        width: 165
+        height: 163
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7727530ef80c2aa498f779d0385a2676
+      spriteID: beb529aa86fdb8443aa2d7d085531793
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: start_button2
+      name: power-up-design_6
       rect:
         serializedVersion: 2
-        x: 965
-        y: 854
-        width: 307
-        height: 134
+        x: 380
+        y: 163
+        width: 165
+        height: 164
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 90654baee99ce8a4c8b7ab10b175a4ff
+      spriteID: 40f7b87519197f646b34448f7c77def9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: power-up-design_7
+      rect:
+        serializedVersion: 2
+        x: 566
+        y: 154
+        width: 175
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6dddb0ca20476f4399855bdb700621f
       vertices: []
       indices: 
       edges: []
@@ -266,7 +287,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 3759cd9f5ed8aae459bd07da6849dce0
+    spriteID: f7cd938cd16a460449b7162fb80b0fb5
     vertices: []
     indices: 
     edges: []

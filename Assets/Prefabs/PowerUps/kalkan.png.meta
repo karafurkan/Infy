@@ -1,14 +1,18 @@
 fileFormatVersion: 2
-guid: b7bcb8da8d5bd4e41938488e69d2135d
+guid: 8d74f4a3308509345bfde8b93909bcc7
 TextureImporter:
   fileIDToRecycleName:
-    21300000: "giris\u2560\xBA ekran\u2500\u2592 taslak_0"
-    21300002: start_button
-    21300004: "giris\u2560\xBA ekran\u2500\u2592 taslak_2"
-    21300006: highscore_button
-    21300008: credits_button
-    21300010: howtoplay_button
-    21300012: start_button2
+    21300000: kalkan_0
+    21300002: kalkan_1
+    21300004: kalkan_2
+    21300006: kalkan_3
+    21300008: kalkan_4
+    21300010: kalkan_5
+    21300012: kalkan_6
+    21300014: kalkan_7
+    21300016: kalkan_8
+    21300018: kalkan_9
+    21300020: kalkan_10
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -124,141 +128,221 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "giris\u2560\xBA ekran\u2500\u2592 taslak_0"
+      name: kalkan_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 750
-        height: 1334
+        x: 52
+        y: 902
+        width: 149
+        height: 147
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f1ffcabd7d6128548a62e86985cc05f8
+      spriteID: ffa0c4c123ddbad48972d662bdcf0afa
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: start_button
+      name: kalkan_1
       rect:
         serializedVersion: 2
-        x: 968
-        y: 856
-        width: 299
-        height: 131
+        x: 224
+        y: 903
+        width: 146
+        height: 146
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 204ae360d9d31bb4291e98051495700d
+      spriteID: c70ba4506b233db47855dd3884c5c2b7
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "giris\u2560\xBA ekran\u2500\u2592 taslak_2"
+      name: kalkan_2
       rect:
         serializedVersion: 2
-        x: 777
-        y: 991
-        width: 279
-        height: 315
+        x: 402
+        y: 903
+        width: 146
+        height: 147
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 919d260cc32da4748bc72d1634e3d3c9
+      spriteID: 5ace5bdf6a35c9945ab5cfddf7463805
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: highscore_button
+      name: kalkan_3
       rect:
         serializedVersion: 2
-        x: 962
-        y: 683
-        width: 254
-        height: 139
+        x: 579
+        y: 888
+        width: 156
+        height: 157
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d640ed81465f8bb4e83d992239735d5b
+      spriteID: 44d11b5749160954f8c4043546c3a1be
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: credits_button
+      name: kalkan_4
       rect:
         serializedVersion: 2
-        x: 809
-        y: 533
-        width: 111
-        height: 115
+        x: 22
+        y: 660
+        width: 179
+        height: 220
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 750a866a357454840a775cdd67ea8b85
+      spriteID: 7a5bc8db1a9de344080d6eefa1f68d5c
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: howtoplay_button
+      name: kalkan_5
       rect:
         serializedVersion: 2
-        x: 804
-        y: 697
-        width: 115
-        height: 111
+        x: 216
+        y: 662
+        width: 183
+        height: 216
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7727530ef80c2aa498f779d0385a2676
+      spriteID: fd453ac4cc4a1204491727f59cfac82c
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: start_button2
+      name: kalkan_6
       rect:
         serializedVersion: 2
-        x: 965
-        y: 854
-        width: 307
-        height: 134
+        x: 584
+        y: 702
+        width: 148
+        height: 147
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 90654baee99ce8a4c8b7ab10b175a4ff
+      spriteID: bd68b5b1c7d189340ba3e1c170070508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kalkan_7
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 421
+        width: 193
+        height: 193
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34389b4bcaa9384449e3871c6bb41036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kalkan_8
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 430
+        width: 195
+        height: 195
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8550384091f3e145bc92f3abca182c1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kalkan_9
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 302
+        width: 252
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 959fc9c014174774aa76299684d99164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kalkan_10
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 299
+        width: 289
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8e091197415a1d4487af756b9dbd3fa
       vertices: []
       indices: 
       edges: []
@@ -266,7 +350,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 3759cd9f5ed8aae459bd07da6849dce0
+    spriteID: c6420e40fb441e741a4f032425ebd174
     vertices: []
     indices: 
     edges: []
