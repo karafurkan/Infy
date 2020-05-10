@@ -21,6 +21,7 @@ public class HighScoresScript : MonoBehaviour
 
     void Start()
     {
+        //PlayerPrefs.DeleteAll();
         if(PlayerPrefs.HasKey("player_name"))
         {
             inputField.gameObject.SetActive(false);
@@ -138,7 +139,7 @@ public class HighScoresScript : MonoBehaviour
 
         foreach (Player p in highScores.message)
         {
-            if (i > 10)
+            if (i > 9)
             {
                 break;
             }

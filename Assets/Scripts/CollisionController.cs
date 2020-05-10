@@ -39,6 +39,8 @@ public class CollisionController : MonoBehaviour
             //Debug.Log("Hit Shield!");
             ActivateShield();
             Invoke("DeactivateShield", 5.0f);
+            StartCoroutine(fadeOut(leftBallAura, 5f));
+            StartCoroutine(fadeOut(rightBallAura, 5f));
             col.gameObject.SetActive(false);
         } else if (col.gameObject.tag == "reverse") {  
             setPowerUpTimer(5);
@@ -46,6 +48,8 @@ public class CollisionController : MonoBehaviour
             rightBallAura.sprite = reverseControlsAura;
             leftBallAura.gameObject.SetActive(true);
             rightBallAura.gameObject.SetActive(true);
+            StartCoroutine(fadeOut(leftBallAura, 5f));
+            StartCoroutine(fadeOut(rightBallAura, 5f));
             //Debug.Log("Hit reverse!");
             ActivateReverseMode();
             Invoke("DeactivateReverseMode", 5.0f);
@@ -157,6 +161,25 @@ public class CollisionController : MonoBehaviour
         rightBallAura.gameObject.SetActive(false);
     }
 
+    IEnumerator fadeOut(SpriteRenderer MyRenderer, float duration)
+    {
+        float counter = 0;
+        //Get current color
+        Color spriteColor = MyRenderer.material.color;
+
+        while (counter < duration)
+        {
+            counter += Time.deltaTime;
+            //Fade from 1 to 0
+            float alpha = Mathf.Lerp(1, 0, counter / duration);
+            Debug.Log(alpha);
+
+            //Change alpha only
+            MyRenderer.color = new Color(spriteColor.r, spriteColor.g, spriteColor.b, alpha);
+            //Wait for a frame
+            yield return null;
+        }
+    }
 
 
 }
