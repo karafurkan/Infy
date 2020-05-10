@@ -87,12 +87,16 @@ public class BallController : MonoBehaviour
         if(isReversedDirection == true) {
             leftBallRB.AddForce(verticalVelocity * verticalDirection, ForceMode2D.Impulse);
             rightBallRB.AddForce(verticalVelocity * verticalDirection, ForceMode2D.Impulse);
+            leftBallRB.transform.Rotate(Vector3.forward * 180);
+            rightBallRB.transform.Rotate(Vector3.forward * 180);
             isReversedController = false;
             isMovingVertically = true;
             isReversedDirection = false;
         }
 
         if (isMovingVertically == true) {
+
+
             if (verticalDirection == -1) {
                 if(leftBallRB.transform.position.y <= -3.83f) {
                     verticalDirection = 1;

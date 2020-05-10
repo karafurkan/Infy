@@ -49,6 +49,7 @@ public class PowerUp : MonoBehaviour
         pooling.PowerUpObject.SetActive(true);
         
         int randomPowerUp = Random.Range(0,5);  // To determine which power-up is it going to be.
+        //int randomPowerUp = 3;
         if(randomPowerUp == 0) {
             //pooling.PowerUpObject.transform.GetComponent<Image>.overrideSprite = Resources.Load<Sprite>("Textures/sprite");
             powerUpSpriteRenderer.sprite = shieldSprite;

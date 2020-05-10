@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class CollisionController : MonoBehaviour
 {
-
     public Text powerUpTimer;
     public GameObject topLimitObject;
+
     public PowerUp PowerUpControl;
     public GameController gameController;
     public float currentSpeed;
@@ -99,6 +99,7 @@ public class CollisionController : MonoBehaviour
 
     void ActivateReverseDirection() {
         PowerUpControl.Invoke("CreatePowerUp", 10f); //change spawn time
+
         objectMover.speedDirection = -objectMover.speedDirection;
         if (BallController.verticalDirection == -1) {
             PowerUpControl.pooling.InitializeObstacles(22f);
