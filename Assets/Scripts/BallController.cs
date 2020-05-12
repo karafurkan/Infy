@@ -20,8 +20,11 @@ public class BallController : MonoBehaviour
     private bool hitRightBall = false;
     private float rightBallDirection = -1;
 
+    public float rotationSpeed;
+
     public static bool isReversedController;
 
+    int temp = 180000;
 
     // Reversed Direction
     public static bool isReversedDirection;
@@ -87,12 +90,25 @@ public class BallController : MonoBehaviour
         if(isReversedDirection == true) {
             leftBallRB.AddForce(verticalVelocity * verticalDirection, ForceMode2D.Impulse);
             rightBallRB.AddForce(verticalVelocity * verticalDirection, ForceMode2D.Impulse);
-            leftBallRB.transform.Rotate(Vector3.forward * 180);
-            rightBallRB.transform.Rotate(Vector3.forward * 180);
+            //leftBallRB.transform.Rotate(Vector3.Up * 180);
+            //rightBallRB.transform.Rotate(Vector3.Up * 180);
+            StartCoroutine(OnMouseDown());
+            
+            
             isReversedController = false;
             isMovingVertically = true;
             isReversedDirection = false;
         }
+        /*
+        if (temp < 180000)
+        {
+            leftBallRB.transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, 0.001f), Time.deltaTime * rotationSpeed);
+            rightBallRB.transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, 0.001f), Time.deltaTime * rotationSpeed);
+            ++temp;
+        }
+            */
+        
+        
 
         if (isMovingVertically == true) {
 
@@ -118,8 +134,9 @@ public class BallController : MonoBehaviour
 
 
 
-    private void LeftRightMovement() {
-         //left ball movement
+    private void LeftRightMovement()
+    {
+        //left ball movement
         if (hitLeftBall && !leftBallMoving)
         {
             leftBallRB.AddForce(velocity * leftBallDirection, ForceMode2D.Impulse);
@@ -179,7 +196,7 @@ public class BallController : MonoBehaviour
         {
             if (rightBallDirection == 1)
             {
-                if (rightBallRB.transform.position.x <= 0.5)
+                if (rightBallRB.transform.position.x <= 0.53)
                 {
                     rightBallRB.AddForce(velocity, ForceMode2D.Impulse);
                     rightBallMoving = false;
@@ -228,5 +245,24 @@ public class BallController : MonoBehaviour
         }
         
     }
+
+    IEnumerator OnMouseDown() // A couroutine can be run each frame so we can do animation.
+    {
+        float endTime = Time.time + 1.5f; // When to end the coroutine
+        float step = 1f / 1.5f; // How much to step by per sec
+        var leftBallAngle = leftBallRB.transform.eulerAngles; // start rotation
+        var rightBallAngle = rightBallRB.transform.eulerAngles; // start rotation
+        var leftBallTarget = leftBallRB.transform.eulerAngles + new Vector3(0, 0, 180); // where we want to be at the end
+        var rightBallTarget = rightBallRB.transform.eulerAngles + new Vector3(0, 0, -180); // where we want to be at the end
+        float t = 0; // how far we are. 0-1
+        while (Time.time <= endTime)
+        {
+            t += step * Time.deltaTime;
+            leftBallRB.transform.eulerAngles = Vector3.Lerp(leftBallAngle, leftBallTarget, t);
+            rightBallRB.transform.eulerAngles = Vector3.Lerp(rightBallAngle, rightBallTarget, t);
+            yield return 0;
+        }
+    }
+
     public void SetVsync0_120FPS() { QualitySettings.vSyncCount = 0; Application.targetFrameRate = 120; }
 }
