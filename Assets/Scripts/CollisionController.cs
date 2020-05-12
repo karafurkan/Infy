@@ -18,10 +18,14 @@ public class CollisionController : MonoBehaviour
 
     public SpriteRenderer leftBallAura;
     public SpriteRenderer rightBallAura;
+    public SpriteRenderer backgroundSpriteRenderer;
+
+    //public GameObject backgroundObject;
 
     void Start() {
         PowerUpControl = topLimitObject.GetComponent<PowerUp>();
         gameController = topLimitObject.GetComponent<GameController>();
+        //backgroundSpriteRenderer = backgroundObject.GetComponent<SpriteRenderer>();
     }
 
     void Update() {
@@ -99,7 +103,6 @@ public class CollisionController : MonoBehaviour
 
     void ActivateReverseDirection() {
         PowerUpControl.Invoke("CreatePowerUp", 10f); //change spawn time
-
         objectMover.speedDirection = -objectMover.speedDirection;
         if (BallController.verticalDirection == -1) {
             PowerUpControl.pooling.InitializeObstacles(22f);
@@ -115,9 +118,10 @@ public class CollisionController : MonoBehaviour
         } else {
             topLimitObject.transform.position = new Vector3(topLimitObject.transform.position.x, 7.56f, 0f);
         }
-
+        
     }
 
+    
 
     void decreasePowerUpTimer() {
         if(powerUpTimer.text != "0") {
@@ -135,6 +139,7 @@ public class CollisionController : MonoBehaviour
 
     void ActivateReverseMode() {
         BallController.isReversedController = true;
+        ToggleBackgroundColor();
     }
 
     void DeactivateReverseMode() {
@@ -142,6 +147,7 @@ public class CollisionController : MonoBehaviour
         powerUpTimer.gameObject.SetActive(false);
         leftBallAura.gameObject.SetActive(false);
         rightBallAura.gameObject.SetActive(false);
+        backgroundSpriteRenderer.color = new Color32(255, 255, 255, 255);
         PowerUpControl.Invoke("CreatePowerUp", 7f); //change spawn time
     }
 
@@ -162,6 +168,29 @@ public class CollisionController : MonoBehaviour
         rightBallAura.gameObject.SetActive(false);
     }
 
+    void ToggleBackgroundColor()
+    {
+        Debug.Log("girdi");
+        if (BallController.isReversedController == true)
+        {
+            Invoke("ToggleBackgroundColor", 1f);
+            if (backgroundSpriteRenderer.color == new Color32(255, 255, 255, 255))
+            {
+                backgroundSpriteRenderer.color = new Color32(13, 236, 0, 255);
+            }
+            else
+            {
+                backgroundSpriteRenderer.color = new Color32(255, 255, 255, 255);
+            }
+        }
+        else
+        {
+            backgroundSpriteRenderer.color = new Color32(255, 255, 255, 255);
+        }
+        
+        
+    }
+
     IEnumerator fadeOut(SpriteRenderer MyRenderer, float duration)
     {
         float counter = 0;
@@ -173,7 +202,6 @@ public class CollisionController : MonoBehaviour
             counter += Time.deltaTime;
             //Fade from 1 to 0
             float alpha = Mathf.Lerp(1, 0, counter / duration);
-            Debug.Log(alpha);
 
             //Change alpha only
             MyRenderer.color = new Color(spriteColor.r, spriteColor.g, spriteColor.b, alpha);
@@ -181,6 +209,6 @@ public class CollisionController : MonoBehaviour
             yield return null;
         }
     }
-
+    
 
 }
