@@ -17,6 +17,7 @@ public class PowerUp : MonoBehaviour
     public Sprite explosiveSprite;
     public Sprite boostSprite;
 
+    int randomPowerUp = 0;
 
     public Pooling pooling;
     void Start()
@@ -47,9 +48,10 @@ public class PowerUp : MonoBehaviour
             pooling.rightLastObject = pooling.PowerUpObject;
         }
         pooling.PowerUpObject.SetActive(true);
-        
-        int randomPowerUp = Random.Range(0,5);  // To determine which power-up is it going to be.
+
+        //int randomPowerUp = Random.Range(0,5);  // To determine which power-up is it going to be.
         //int randomPowerUp = 1;
+        ++randomPowerUp;
         if(randomPowerUp == 0) {
             //pooling.PowerUpObject.transform.GetComponent<Image>.overrideSprite = Resources.Load<Sprite>("Textures/sprite");
             powerUpSpriteRenderer.sprite = shieldSprite;
