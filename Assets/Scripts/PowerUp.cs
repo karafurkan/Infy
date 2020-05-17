@@ -49,8 +49,8 @@ public class PowerUp : MonoBehaviour
         }
         pooling.PowerUpObject.SetActive(true);
 
-        //int randomPowerUp = Random.Range(0,5);  // To determine which power-up is it going to be.
-        int randomPowerUp = 2;
+        int randomPowerUp = Random.Range(0,5);  // To determine which power-up is it going to be.
+        //int randomPowerUp = 2;
         
         //++randomPowerUp;
         if(randomPowerUp == 0) {
