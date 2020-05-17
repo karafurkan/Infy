@@ -10,6 +10,7 @@ public class CollisionController : MonoBehaviour
 
     public PowerUp PowerUpControl;
     public GameController gameController;
+    public Pooling poolingController;
     public float currentSpeed;
 
     public Sprite shieldAura;
@@ -19,13 +20,15 @@ public class CollisionController : MonoBehaviour
     public SpriteRenderer leftBallAura;
     public SpriteRenderer rightBallAura;
     public SpriteRenderer backgroundSpriteRenderer;
+    
+    public float animSpeed;
 
     //public GameObject backgroundObject;
 
     void Start() {
         PowerUpControl = topLimitObject.GetComponent<PowerUp>();
         gameController = topLimitObject.GetComponent<GameController>();
-        //backgroundSpriteRenderer = backgroundObject.GetComponent<SpriteRenderer>();
+        poolingController = topLimitObject.GetComponent<Pooling>();
     }
 
     void Update() {
@@ -48,12 +51,12 @@ public class CollisionController : MonoBehaviour
             col.gameObject.SetActive(false);
         } else if (col.gameObject.tag == "reverse") {  
             setPowerUpTimer(5);
-            leftBallAura.sprite = reverseControlsAura;
-            rightBallAura.sprite = reverseControlsAura;
-            leftBallAura.gameObject.SetActive(true);
-            rightBallAura.gameObject.SetActive(true);
-            StartCoroutine(fadeOut(leftBallAura, 5f));
-            StartCoroutine(fadeOut(rightBallAura, 5f));
+            //leftBallAura.sprite = reverseControlsAura; //buggy
+            //rightBallAura.sprite = reverseControlsAura;
+            //leftBallAura.gameObject.SetActive(true);
+            //rightBallAura.gameObject.SetActive(true);
+            //StartCoroutine(fadeOut(leftBallAura, 5f));
+            //StartCoroutine(fadeOut(rightBallAura, 5f));
             //Debug.Log("Hit reverse!");
             ActivateReverseMode();
             Invoke("DeactivateReverseMode", 5.0f);
@@ -61,6 +64,7 @@ public class CollisionController : MonoBehaviour
         } else if (col.gameObject.tag == "explosive") { 
             //Debug.Log("Hit explosive");
             col.gameObject.SetActive(false);
+            poolingController.StartExplosions();
             PowerUpControl.ActivateExplosive();
             PowerUpControl.Invoke("CreatePowerUp", 7f); //change spawn time
         } else if (col.gameObject.tag == "reverse-direction") {
@@ -72,10 +76,12 @@ public class CollisionController : MonoBehaviour
             
         } else if (col.gameObject.tag == "boost") { 
             col.gameObject.SetActive(false);
-            leftBallAura.gameObject.SetActive(true);
-            rightBallAura.gameObject.SetActive(true);
             leftBallAura.sprite = shieldAura;
             rightBallAura.sprite = shieldAura;
+            leftBallAura.color = leftBallAura.material.color;
+            rightBallAura.color = rightBallAura.material.color;
+            leftBallAura.gameObject.SetActive(true);
+            rightBallAura.gameObject.SetActive(true);
             ActivateBoost();
             Invoke("DeactivateBoost", 2.0f);
             

@@ -13,10 +13,11 @@ public class Pooling : MonoBehaviour
     public GameObject PowerUpObject;
     public GameObject[] leftObstacleArray = new GameObject[4];
     public GameObject[] rightObstacleArray = new GameObject[4];
+    public Animator[] explosionArray = new Animator[8];
 
     public float minimumGap;
     public float maximumGap;
-
+    public float animationSpeed;
 
     public PowerUp PowerUpControl;
     /*
@@ -32,6 +33,10 @@ public class Pooling : MonoBehaviour
         spawnPoints[0] = 1.0f;
         spawnPoints[1] = 2.0f;
         spawnPoints[2] = 3.0f;
+        foreach(Animator an in explosionArray)
+        {
+            an.speed = animationSpeed;
+        }
 
         InitializeObstacles(-2.0f);
 
@@ -145,5 +150,32 @@ public class Pooling : MonoBehaviour
         }
     }
 
+    public void StartExplosions()
+    {
+        int arrayIndex = 0;
+        foreach(GameObject go in leftObstacleArray)
+        {
+            explosionArray[arrayIndex].transform.position = go.transform.position;
+            explosionArray[arrayIndex].gameObject.SetActive(true);
+            //explosionArray[arrayIndex].StartPlayback();
+            ++arrayIndex;
+        }
+        foreach (GameObject go in rightObstacleArray)
+        {
+            explosionArray[arrayIndex].transform.position = go.transform.position;
+            explosionArray[arrayIndex].gameObject.SetActive(true);
+            //explosionArray[arrayIndex].StartPlayback();
+            ++arrayIndex;
+        }
+        Invoke("StopExplosions", 2f);
+    }
+    
+    public void StopExplosions()
+    {
+        foreach(Animator an in explosionArray)
+        {
+            an.gameObject.SetActive(false);
+        }
+    }
 
 }
