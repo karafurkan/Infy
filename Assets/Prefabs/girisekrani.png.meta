@@ -2,9 +2,9 @@ fileFormatVersion: 2
 guid: b7bcb8da8d5bd4e41938488e69d2135d
 TextureImporter:
   fileIDToRecycleName:
-    21300000: "giris\u2560\xBA ekran\u2500\u2592 taslak_0"
+    21300000: background
     21300002: start_button
-    21300004: "giris\u2560\xBA ekran\u2500\u2592 taslak_2"
+    21300004: spaceship
     21300006: highscore_button
     21300008: credits_button
     21300010: howtoplay_button
@@ -124,7 +124,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "giris\u2560\xBA ekran\u2500\u2592 taslak_0"
+      name: background
       rect:
         serializedVersion: 2
         x: 0
@@ -164,7 +164,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "giris\u2560\xBA ekran\u2500\u2592 taslak_2"
+      name: spaceship
       rect:
         serializedVersion: 2
         x: 777
