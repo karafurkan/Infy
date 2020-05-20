@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using System.Net;
+using System;
+using UnityEngine.Networking;
 
 public class GameController : MonoBehaviour
 {
@@ -12,10 +15,16 @@ public class GameController : MonoBehaviour
     
     public Button restartButton;
     public Button returnMainMenuButton;
-    public ArrayList highScores = new ArrayList();
-    int highScoreIndex;
+    public Button resumeButton;
+    public Image menuBackground;
+    public Image pausedText;
+    public Image gameOverText;
+    public Text backgroundScoreText;
+    public int highScore;
 
     public Button PauseButton;
+
+    private const string API_KEY = "PrGvxpGqaHhRUWSxh70zq43ExqhIXhhW";
 
     void Start()
     {
@@ -23,19 +32,23 @@ public class GameController : MonoBehaviour
         isPaused = false;
         restartButton.gameObject.SetActive(false);
         returnMainMenuButton.gameObject.SetActive(false);
+        menuBackground.gameObject.SetActive(false);
+        pausedText.gameObject.SetActive(false);
+        resumeButton.gameObject.SetActive(false);
+        restartButton.gameObject.SetActive(false);
+        returnMainMenuButton.gameObject.SetActive(false);
+        backgroundScoreText.gameObject.SetActive(false);
+        gameOverText.gameObject.SetActive(false);
 
-        string scoreString = "score";
-        for (highScoreIndex = 0; highScoreIndex < 10; ++highScoreIndex)
+        if (PlayerPrefs.HasKey("score"))
         {
-            if (PlayerPrefs.HasKey(scoreString + highScoreIndex))
-            {
-                highScores.Add(PlayerPrefs.GetInt(scoreString + highScoreIndex));
-            }
-            else
-            {
-                break;
-            }
+            highScore = PlayerPrefs.GetInt("score");
         }
+        else
+        {
+            highScore = 0;
+        }
+            
 
         StartGame();
     }
@@ -52,21 +65,38 @@ public class GameController : MonoBehaviour
 
     public void PauseButtonClicked() {
         if (isPaused == false) {
+
             PauseGame();
-        } else {
-            ContinueGame();
         }
+    }
+
+    public void ContinueButtonClicked()
+    {
+        ContinueGame();
     }
 
     public void PauseGame()
     {
         Time.timeScale = 0;
         isPaused = true;
+        //resumeButton.transform.position = new Vector3(resumeButton.transform.position.x, 378.2429f, 0);
+        //restartButton.transform.position = new Vector3(restartButton.transform.position.x, 311.4257f, 0);
+        menuBackground.gameObject.SetActive(true);
+        pausedText.gameObject.SetActive(true);
+        resumeButton.gameObject.SetActive(true);
+        restartButton.gameObject.SetActive(true);
+        returnMainMenuButton.gameObject.SetActive(true);
+
     } 
     public void ContinueGame()
     {
         Time.timeScale = 1;
         isPaused = false;
+        menuBackground.gameObject.SetActive(false);
+        pausedText.gameObject.SetActive(false);
+        resumeButton.gameObject.SetActive(false);
+        restartButton.gameObject.SetActive(false);
+        returnMainMenuButton.gameObject.SetActive(false);
     } 
     public void StartGame()
     {
@@ -88,45 +118,27 @@ public class GameController : MonoBehaviour
 
     public void GameOver()
     {
-        //high score arrangement
-        if (highScores.Count > 0)
+        if(Score.score > highScore)
         {
-            if (highScores.Count >= 10) //highScores has 10 elements
+            PlayerPrefs.SetInt("score", (int)Score.score);
+            highScore = (int)Score.score;
+            if (PlayerPrefs.HasKey("player_name") && (Application.internetReachability != NetworkReachability.NotReachable))
             {
-                for(int x = 0;x<10;++x)
-                {
-                    Debug.Log(highScores[x]);
-                }
-                int minValue = (int)GetMinValue(highScores);
-                if (Score.score > minValue)
-                {
-                    Debug.Log("Min value found: " + minValue + "\nPlayerpref change: score" + highScores.IndexOf(minValue) + "\nhighScores[highScores.IndexOf(minValue)]: " + highScores[highScores.IndexOf(minValue)]);
-                    for (int x = 0; x < 10; ++x)
-                    {
-                        Debug.Log(highScores[x]);
-                    }
-                    PlayerPrefs.SetInt("score" + highScores.IndexOf(minValue), (int)Score.score);
-                    highScores[highScores.IndexOf(minValue)] = (int)Score.score;
-                }
+                List<IMultipartFormSection> formData = new List<IMultipartFormSection>();
+                UnityWebRequest www = UnityWebRequest.Post(String.Format("http://infy-app.herokuapp.com/api/score?name={0}&score={1}&key={2}", PlayerPrefs.GetString("player_name"), highScore, API_KEY),formData);
+                www.SendWebRequest();
             }
-            else //highScores has less than 10 elements
-            {
-                PlayerPrefs.SetInt("score" + highScores.Count, (int)Score.score);
-                highScores.Add((int)Score.score);
-            }
+        }
 
-        }
-        else //highScores is empty
-        {
-            PlayerPrefs.SetInt("score0", (int)Score.score);
-            highScores.Add((int)Score.score);
-        }
-        PlayerPrefs.Save();
+        backgroundScoreText.text = "SCORE: " + (int)Score.score;
+        menuBackground.gameObject.SetActive(true);
+        gameOverText.gameObject.SetActive(true);
         restartButton.gameObject.SetActive(true);
         returnMainMenuButton.gameObject.SetActive(true);
-        PauseGame();
+        isPaused = true;
         PauseButton.gameObject.SetActive(false);
-        
+        backgroundScoreText.gameObject.SetActive(true);
+        Time.timeScale = 0;
 
     }
     

@@ -5,6 +5,7 @@ TextureImporter:
     21300000: obstacle
     21300002: ball
     21300004: background
+    21300006: deneme
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -128,7 +129,7 @@ TextureImporter:
         width: 237
         height: 25
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -148,7 +149,7 @@ TextureImporter:
         width: 79
         height: 79
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -168,13 +169,33 @@ TextureImporter:
         width: 1136
         height: 2111
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: 3ed42b91a3f12400d9b6b0818311e6b5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deneme
+      rect:
+        serializedVersion: 2
+        x: 612
+        y: 2215
+        width: 209
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bff2e0bc6f2011a4ea9d65b5e1c9d23a
       vertices: []
       indices: 
       edges: []

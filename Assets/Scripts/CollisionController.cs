@@ -5,15 +5,30 @@ using UnityEngine.UI;
 
 public class CollisionController : MonoBehaviour
 {
-
     public Text powerUpTimer;
     public GameObject topLimitObject;
+
     public PowerUp PowerUpControl;
     public GameController gameController;
+    public Pooling poolingController;
     public float currentSpeed;
+
+    public Sprite shieldAura;
+    public Sprite reverseControlsAura;
+    //public Sprite reverseDirectionAura;
+
+    public SpriteRenderer leftBallAura;
+    public SpriteRenderer rightBallAura;
+    public SpriteRenderer backgroundSpriteRenderer;
+    
+    public float animSpeed;
+
+    //public GameObject backgroundObject;
+
     void Start() {
         PowerUpControl = topLimitObject.GetComponent<PowerUp>();
         gameController = topLimitObject.GetComponent<GameController>();
+        poolingController = topLimitObject.GetComponent<Pooling>();
     }
 
     void Update() {
@@ -24,12 +39,24 @@ public class CollisionController : MonoBehaviour
         //Debug.Log("Hit!");
         if (col.gameObject.tag == "shield") {   
             setPowerUpTimer(5);
+            leftBallAura.sprite = shieldAura;
+            rightBallAura.sprite = shieldAura;
+            leftBallAura.gameObject.SetActive(true);
+            rightBallAura.gameObject.SetActive(true);
             //Debug.Log("Hit Shield!");
             ActivateShield();
             Invoke("DeactivateShield", 5.0f);
+            StartCoroutine(fadeOut(leftBallAura, 5f));
+            StartCoroutine(fadeOut(rightBallAura, 5f));
             col.gameObject.SetActive(false);
         } else if (col.gameObject.tag == "reverse") {  
             setPowerUpTimer(5);
+            //leftBallAura.sprite = reverseControlsAura; //buggy
+            //rightBallAura.sprite = reverseControlsAura;
+            //leftBallAura.gameObject.SetActive(true);
+            //rightBallAura.gameObject.SetActive(true);
+            //StartCoroutine(fadeOut(leftBallAura, 5f));
+            //StartCoroutine(fadeOut(rightBallAura, 5f));
             //Debug.Log("Hit reverse!");
             ActivateReverseMode();
             Invoke("DeactivateReverseMode", 5.0f);
@@ -37,15 +64,24 @@ public class CollisionController : MonoBehaviour
         } else if (col.gameObject.tag == "explosive") { 
             //Debug.Log("Hit explosive");
             col.gameObject.SetActive(false);
+            poolingController.StartExplosions();
             PowerUpControl.ActivateExplosive();
             PowerUpControl.Invoke("CreatePowerUp", 7f); //change spawn time
-        } else if (col.gameObject.tag == "reverse-direction") { 
+        } else if (col.gameObject.tag == "reverse-direction") {
             //Debug.Log("Hit reverse direction");
+            //leftBallAura.sprite = reverseDirectionAura;
+            //rightBallAura.sprite = reverseDirectionAura;
             col.gameObject.SetActive(false);
             ActivateReverseDirection();
             
         } else if (col.gameObject.tag == "boost") { 
             col.gameObject.SetActive(false);
+            leftBallAura.sprite = shieldAura;
+            rightBallAura.sprite = shieldAura;
+            leftBallAura.color = leftBallAura.material.color;
+            rightBallAura.color = rightBallAura.material.color;
+            leftBallAura.gameObject.SetActive(true);
+            rightBallAura.gameObject.SetActive(true);
             ActivateBoost();
             Invoke("DeactivateBoost", 2.0f);
             
@@ -88,9 +124,10 @@ public class CollisionController : MonoBehaviour
         } else {
             topLimitObject.transform.position = new Vector3(topLimitObject.transform.position.x, 7.56f, 0f);
         }
-
+        
     }
 
+    
 
     void decreasePowerUpTimer() {
         if(powerUpTimer.text != "0") {
@@ -108,11 +145,15 @@ public class CollisionController : MonoBehaviour
 
     void ActivateReverseMode() {
         BallController.isReversedController = true;
+        ToggleBackgroundColor();
     }
 
     void DeactivateReverseMode() {
         BallController.isReversedController = false;
         powerUpTimer.gameObject.SetActive(false);
+        leftBallAura.gameObject.SetActive(false);
+        rightBallAura.gameObject.SetActive(false);
+        backgroundSpriteRenderer.color = new Color32(255, 255, 255, 255);
         PowerUpControl.Invoke("CreatePowerUp", 7f); //change spawn time
     }
 
@@ -129,8 +170,51 @@ public class CollisionController : MonoBehaviour
 
     void SetShieldOff() {
         PowerUp.hasShield = false;
+        leftBallAura.gameObject.SetActive(false);
+        rightBallAura.gameObject.SetActive(false);
     }
 
+    void ToggleBackgroundColor()
+    {
+        Debug.Log("girdi");
+        if (BallController.isReversedController == true)
+        {
+            Invoke("ToggleBackgroundColor", 1f);
+            if (backgroundSpriteRenderer.color == new Color32(255, 255, 255, 255))
+            {
+                backgroundSpriteRenderer.color = new Color32(13, 236, 0, 255);
+            }
+            else
+            {
+                backgroundSpriteRenderer.color = new Color32(255, 255, 255, 255);
+            }
+        }
+        else
+        {
+            backgroundSpriteRenderer.color = new Color32(255, 255, 255, 255);
+        }
+        
+        
+    }
 
+    IEnumerator fadeOut(SpriteRenderer MyRenderer, float duration)
+    {
+        float counter = 0;
+        //Get current color
+        Color spriteColor = MyRenderer.material.color;
+
+        while (counter < duration)
+        {
+            counter += Time.deltaTime;
+            //Fade from 1 to 0
+            float alpha = Mathf.Lerp(1, 0, counter / duration);
+
+            //Change alpha only
+            MyRenderer.color = new Color(spriteColor.r, spriteColor.g, spriteColor.b, alpha);
+            //Wait for a frame
+            yield return null;
+        }
+    }
+    
 
 }

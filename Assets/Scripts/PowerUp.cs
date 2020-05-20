@@ -11,6 +11,13 @@ public class PowerUp : MonoBehaviour
 
     public static bool hasShield = false;
 
+    public Sprite shieldSprite;
+    public Sprite reverseControlsSprite;
+    public Sprite reverseDirectionSprite;
+    public Sprite explosiveSprite;
+    public Sprite boostSprite;
+
+    //int randomPowerUp = -1;
 
     public Pooling pooling;
     void Start()
@@ -42,26 +49,29 @@ public class PowerUp : MonoBehaviour
         }
         pooling.PowerUpObject.SetActive(true);
 
-
-        int randomPowerUp = Random.Range(0,5);  // To determine which power-up is it going to be.
-        //randomPowerUp = 4; 
-        if(randomPowerUp == 0) {
-            pooling.PowerUpObject.tag = "shield";
-            powerUpSpriteRenderer.color = Color.blue;
-        } else if (randomPowerUp == 1){
-            pooling.PowerUpObject.tag = "reverse";
-            powerUpSpriteRenderer.color = Color.red;
-        } else if (randomPowerUp == 2) {
-            pooling.PowerUpObject.tag = "explosive";
-            powerUpSpriteRenderer.color = Color.yellow;
-        } else if (randomPowerUp == 3) {
-            pooling.PowerUpObject.tag = "reverse-direction";
-            powerUpSpriteRenderer.color = Color.green;
-        } else if (randomPowerUp == 4) {
-            pooling.PowerUpObject.tag = "boost";
-            powerUpSpriteRenderer.color = Color.white;
-        } 
+        //int randomPowerUp = Random.Range(0,5);  // To determine which power-up is it going to be.
+        int randomPowerUp = 2;
         
+        //++randomPowerUp;
+        if(randomPowerUp == 0) {
+            //pooling.PowerUpObject.transform.GetComponent<Image>.overrideSprite = Resources.Load<Sprite>("Textures/sprite");
+            powerUpSpriteRenderer.sprite = shieldSprite;
+            pooling.PowerUpObject.tag = "shield";
+            //powerUpSpriteRenderer.color = Color.blue;
+        } else if (randomPowerUp == 1){
+            powerUpSpriteRenderer.sprite = reverseControlsSprite;
+            pooling.PowerUpObject.tag = "reverse";
+        } else if (randomPowerUp == 2) {
+            powerUpSpriteRenderer.sprite = explosiveSprite;
+            pooling.PowerUpObject.tag = "explosive";
+        } else if (randomPowerUp == 3) {
+            powerUpSpriteRenderer.sprite = reverseDirectionSprite;
+            pooling.PowerUpObject.tag = "reverse-direction";
+        } else if (randomPowerUp == 4) {
+            powerUpSpriteRenderer.sprite = boostSprite; //3 saniye sonra shield bitecek. (2 saniye boost 1 saniye extra)
+            Invoke("RemoveShield", 3f);
+            pooling.PowerUpObject.tag = "boost";
+        }
      
     }
 
