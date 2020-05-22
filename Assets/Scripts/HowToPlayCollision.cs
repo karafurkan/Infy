@@ -8,10 +8,11 @@ public class HowToPlayCollision : MonoBehaviour
 {
 
     public Text guideText;
-    
+    public GameObject[] powerUpHints = new GameObject[5];
+    public GameObject seperator;
+
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -24,8 +25,18 @@ public class HowToPlayCollision : MonoBehaviour
         if (col.gameObject.tag == "shield") {
             col.gameObject.SetActive(false);
             guideText.text = "Now check out all the powerups!";
+            ShowPowerUpHints();
         } else {
             col.gameObject.transform.position = new Vector3(transform.position.x, -5.4f, 0f);
         }
+    }
+
+    private void ShowPowerUpHints()
+    {
+        foreach (GameObject go in powerUpHints)
+        {
+            go.gameObject.SetActive(true);
+        }
+        seperator.gameObject.SetActive(false);
     }
 }

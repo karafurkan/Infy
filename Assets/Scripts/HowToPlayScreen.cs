@@ -30,10 +30,14 @@ public class HowToPlayScreen : MonoBehaviour
     private float rightBallPosX;
 
 
+
+
     public GameObject obstacle;
     public GameObject powerup;
 
     public Text guideText;
+    public Text tapLeft;
+    public Text tapRight;
 
     private int stage = 0;
 
@@ -67,11 +71,16 @@ public class HowToPlayScreen : MonoBehaviour
     public void Flow() {
 
         if (stage == 1) {
-            guideText.text = "Top on Right Side!";
+            //guideText.text = "Top on Right Side!";
+            tapLeft.gameObject.SetActive(false);
+            tapRight.gameObject.SetActive(true);
             leftButton.gameObject.SetActive(false);
             rightButton.gameObject.SetActive(true);
 
         } else if (stage == 2) {
+            tapLeft.gameObject.SetActive(false);
+            tapRight.gameObject.SetActive(false);
+            guideText.gameObject.SetActive(true);
             guideText.text = "Avoid the obstacle!";
             leftButton.gameObject.SetActive(true);
             MoveObstacle();
@@ -160,4 +169,5 @@ public class HowToPlayScreen : MonoBehaviour
             powerup.transform.position = new Vector3(powerup.transform.position.x, -5.4f, 0f);
         }
     }
+
 }
