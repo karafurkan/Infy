@@ -1,10 +1,11 @@
 fileFormatVersion: 2
-guid: 29dc665f84bb8c641b62327041f79207
+guid: effeebe13b1252f479d3118154ed4eb4
 TextureImporter:
   fileIDToRecycleName:
-    21300000: high score_0
-    21300002: high score_1
-    21300004: high score_2
+    21300000: power-up-revize_0
+    21300002: power-up-revize_1
+    21300004: power-up-revize_2
+    21300006: power-up-revize_3
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -120,61 +121,81 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: high score_0
+      name: power-up-revize_0
       rect:
         serializedVersion: 2
-        x: 156
-        y: 127
-        width: 651
-        height: 575
+        x: 48
+        y: 221
+        width: 130
+        height: 131
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aff104ea8e5f5164d84228119ffc6e36
+      spriteID: 35d0d1b0bd63ed646aa6942c9b10f0e4
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: high score_1
+      name: power-up-revize_1
       rect:
         serializedVersion: 2
-        x: 28
-        y: 0
-        width: 864
-        height: 722
+        x: 252
+        y: 226
+        width: 131
+        height: 131
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 47bbb186cc863bb42b6d8930107163e3
+      spriteID: b0ed0e0dc7059bc46a8eadc06e5db9ca
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: high score_2
+      name: power-up-revize_2
       rect:
         serializedVersion: 2
-        x: 136
-        y: 713
-        width: 736
-        height: 145
+        x: 36
+        y: 12
+        width: 144
+        height: 143
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 516a2df7f53ca494f84b7233b858257b
+      spriteID: 8387135007628a04a9e55110a9bbce08
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: power-up-revize_3
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 9
+        width: 143
+        height: 143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff831e5e7dce91447bec1f6d571deb04
       vertices: []
       indices: 
       edges: []
@@ -182,7 +203,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: bcfc453998af7ac48a75c63d9275e563
+    spriteID: 52e024af430650641b2cf61407eede2c
     vertices: []
     indices: 
     edges: []

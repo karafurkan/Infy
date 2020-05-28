@@ -4251,9 +4251,9 @@ MonoBehaviour:
   - 0
   - 0
   shieldSprite: {fileID: 21300006, guid: 3e5bf24e96ebf7e4b877b3e5b1c6d0cf, type: 3}
-  reverseControlsSprite: {fileID: 21300004, guid: 8d74f4a3308509345bfde8b93909bcc7,
+  reverseControlsSprite: {fileID: 21300002, guid: effeebe13b1252f479d3118154ed4eb4,
     type: 3}
-  reverseDirectionSprite: {fileID: 21300000, guid: 8d74f4a3308509345bfde8b93909bcc7,
+  reverseDirectionSprite: {fileID: 21300006, guid: effeebe13b1252f479d3118154ed4eb4,
     type: 3}
   explosiveSprite: {fileID: 21300002, guid: 3e5bf24e96ebf7e4b877b3e5b1c6d0cf, type: 3}
   boostSprite: {fileID: 21300000, guid: 3e5bf24e96ebf7e4b877b3e5b1c6d0cf, type: 3}

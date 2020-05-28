@@ -17,6 +17,9 @@ public class HighScoresScript : MonoBehaviour
     public HighScoreInfo highScores;
     public InputField inputField;
     public Button SubmitButton;
+    public Image highscore_text;
+    public Sprite highscore_turkish;
+    private string language;
     private const string API_KEY = "PrGvxpGqaHhRUWSxh70zq43ExqhIXhhW";
 
     void Start()
@@ -28,7 +31,12 @@ public class HighScoresScript : MonoBehaviour
             SubmitButton.gameObject.SetActive(false);
             DisplayHighScores();
         }
-        
+        language = PlayerPrefs.GetString("language");
+        if(language == "tr")
+        {
+            highscore_text.sprite = highscore_turkish;
+        }
+
         
     }
 
@@ -132,8 +140,16 @@ public class HighScoresScript : MonoBehaviour
         }
         
         int i = 0;
-        highScoreNameText.text = "NAME\n\n";
-        highScoreScoreText.text = "SCORE\n\n";
+        if(language == "en")
+        {
+            highScoreNameText.text = "NAME\n";
+            highScoreScoreText.text = "SCORE\n";
+        }
+        else
+        {
+            highScoreNameText.text = "İSİM\n";
+            highScoreScoreText.text = "SKOR\n";
+        }
 
         highScores = GetHighScores();
 
@@ -147,8 +163,8 @@ public class HighScoresScript : MonoBehaviour
             highScoreScoreText.text += p.score + "\n";
             ++i;
         }
-        highScoreNameText.text += "\n" + localName + "\n";
-        highScoreScoreText.text += "\n" + localHighScore + "\n";
+        highScoreNameText.text += localName + "\n";
+        highScoreScoreText.text += localHighScore + "\n";
     }
 
 }
