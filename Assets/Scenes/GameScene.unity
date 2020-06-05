@@ -1690,7 +1690,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -31.3, y: -72.4}
+  m_AnchoredPosition: {x: -31.300049, y: -72.4}
   m_SizeDelta: {x: 50, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &557962981
@@ -1913,7 +1913,7 @@ RectTransform:
   m_GameObject: {fileID: 682227435}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.0882812, y: 0.39065623, z: 1}
+  m_LocalScale: {x: 2.5, y: 0.39065623, z: 1}
   m_Children: []
   m_Father: {fileID: 1690219557}
   m_RootOrder: 15
@@ -2569,7 +2569,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &960070203
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3797,7 +3797,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1332072597
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4000,7 +4000,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1529057910
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4228,8 +4228,8 @@ MonoBehaviour:
   - {fileID: 1090995354}
   - {fileID: 477799999}
   - {fileID: 823788659}
-  minimumGap: 2.5
-  maximumGap: 4
+  minimumGap: 3
+  maximumGap: 5
   animationSpeed: 3
   PowerUpControl: {fileID: 0}
 --- !u!114 &1637709556
@@ -4276,6 +4276,15 @@ MonoBehaviour:
   menuBackground: {fileID: 227321707}
   pausedText: {fileID: 1754295851}
   blurImage: {fileID: 1097290846}
+  gameOverText: {fileID: 1238317997}
+  restartButton_tr: {fileID: 177461645}
+  returnMainMenuButton_tr: {fileID: 541718879}
+  resumeButton_tr: {fileID: 757979854}
+  pause_tr: {fileID: 21300000, guid: 68e2b71928a96a24c82e1e6843026698, type: 3}
+  continue_tr: {fileID: 21300002, guid: 68e2b71928a96a24c82e1e6843026698, type: 3}
+  tryagain_tr: {fileID: 21300004, guid: 68e2b71928a96a24c82e1e6843026698, type: 3}
+  returnToMenu_tr: {fileID: 21300006, guid: 68e2b71928a96a24c82e1e6843026698, type: 3}
+  gameOver_tr: {fileID: 21300000, guid: f56dd9e2aaadb2040ba8f8dc94fe1a1f, type: 3}
   GameOverArray:
   - {fileID: 1238317995}
   - {fileID: 1675286721}

@@ -16,9 +16,21 @@ public class GameController : MonoBehaviour
     public Button restartButton;
     public Button returnMainMenuButton;
     public Button resumeButton;
+
     public Image menuBackground;
     public Image pausedText;
     public Image blurImage;
+    public Image gameOverText;
+    public Image restartButton_tr;
+    public Image returnMainMenuButton_tr;
+    public Image resumeButton_tr;
+
+    public Sprite pause_tr;
+    public Sprite continue_tr;
+    public Sprite tryagain_tr;
+    public Sprite returnToMenu_tr;
+
+    public Sprite gameOver_tr;
 
     public GameObject[] GameOverArray = new GameObject[12];
     
@@ -55,7 +67,19 @@ public class GameController : MonoBehaviour
         {
             highScore = 0;
         }
-            
+
+        
+        if (PlayerPrefs.GetString("language") == "tr")
+        {
+            GameOverArray[7].GetComponent<Text>().text = "SKOR";
+            GameOverArray[8].GetComponent<Text>().text = "EN YÜKSEK SKOR";
+            gameOverText.sprite = gameOver_tr;
+            pausedText.sprite = pause_tr;
+            restartButton_tr.sprite = tryagain_tr;
+            returnMainMenuButton_tr.sprite = returnToMenu_tr;
+            resumeButton_tr.sprite = continue_tr;
+        }
+
 
         StartGame();
     }

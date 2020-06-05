@@ -35,6 +35,9 @@ public class HighScoresScript : MonoBehaviour
         if(language == "tr")
         {
             highscore_text.sprite = highscore_turkish;
+            inputField.placeholder.GetComponent<Text>().text = "Kullanıcı adı girin";
+            SubmitButton.GetComponentInChildren<Text>().text = "GÖNDER";
+
         }
 
         
@@ -110,12 +113,28 @@ public class HighScoresScript : MonoBehaviour
         if(userInput.Length > 20 || userInput.Length == 0)
         {
             inputField.text = "";
-            inputField.placeholder.GetComponent<Text>().text = "Enter a valid username";
+            if (PlayerPrefs.GetString("language") == "tr")
+            {
+                inputField.placeholder.GetComponent<Text>().text = "Geçerli bir kullanıcı adı girin";
+            }
+            else
+            {
+                inputField.placeholder.GetComponent<Text>().text = "Enter a valid username";
+            }
+                
         }
         else if(CheckPlayerName(userInput))
         {
             inputField.text = "";
-            inputField.placeholder.GetComponent<Text>().text = "User name already exists";
+            if (PlayerPrefs.GetString("language") == "tr")
+            {
+                inputField.placeholder.GetComponent<Text>().text = "Kullanıcı adı zaten mevcut";
+            }
+            else
+            {
+                inputField.placeholder.GetComponent<Text>().text = "User name already exists";
+            }
+            
         }
         else
         {

@@ -29,7 +29,7 @@ public class HowToPlayScreen : MonoBehaviour
     private float leftBallPosX;
     private float rightBallPosX;
 
-
+    public Text[] powerUpHints;
 
 
     public GameObject obstacle;
@@ -81,7 +81,15 @@ public class HowToPlayScreen : MonoBehaviour
             tapLeft.gameObject.SetActive(false);
             tapRight.gameObject.SetActive(false);
             guideText.gameObject.SetActive(true);
-            guideText.text = "Avoid the obstacle!";
+            if (PlayerPrefs.GetString("language") == "tr")
+            {
+                guideText.text = "Engellerden kaç!";
+            }
+            else
+            {
+                guideText.text = "Avoid the obstacle!";
+            }
+                
             leftButton.gameObject.SetActive(true);
             MoveObstacle();
 
@@ -156,7 +164,15 @@ public class HowToPlayScreen : MonoBehaviour
         }
         else if (obstacle.gameObject.transform.position.y >= 5.15 && stage == 3) {
             stage = 4;
-            guideText.text = "Collect the power-up!";
+            if (PlayerPrefs.GetString("language") == "tr")
+            {
+                guideText.text = "Güçlendirmeyi al!";
+            }
+            else
+            {
+                guideText.text = "Collect the power-up!";
+            }
+            
             powerup.gameObject.SetActive(true);
             obstacle.gameObject.SetActive(false);
         }
