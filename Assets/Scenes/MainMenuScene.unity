@@ -1330,6 +1330,7 @@ MonoBehaviour:
   soundButton: {fileID: 58331385}
   play_image: {fileID: 429409254}
   highscore_image: {fileID: 1982085810}
+  soundWaves: {fileID: 2063346871}
   play_english: {fileID: 21300034, guid: 3dfd7b6c7016f4645aa308e6c2b9953e, type: 3}
   play_turkish: {fileID: 21300032, guid: 3dfd7b6c7016f4645aa308e6c2b9953e, type: 3}
   highscore_english: {fileID: 21300000, guid: 3872988bea3d5b44eb9d9bd7f39cb61e, type: 3}

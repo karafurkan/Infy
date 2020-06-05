@@ -12,7 +12,9 @@ public class GameController : MonoBehaviour
 {
     public static bool isPaused;
     public static bool isGameOver;
-    
+
+    public AudioSource gameAudio;
+
     public Button restartButton;
     public Button returnMainMenuButton;
     public Button resumeButton;
@@ -58,6 +60,13 @@ public class GameController : MonoBehaviour
         {
             go.gameObject.SetActive(false);
         }
+
+        if (PlayerPrefs.GetString("audio") == "on")
+        {
+            gameAudio.Play();
+        }
+        
+
 
         if (PlayerPrefs.HasKey("score"))
         {
@@ -188,6 +197,7 @@ public class GameController : MonoBehaviour
    
     public void returnMainMenuClicked() {
         //Debug.Log("returnMainMenuClicked called!");
+        gameAudio.Stop();
         SceneManager.LoadScene("MainMenuScene");
     }
 
