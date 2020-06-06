@@ -29,11 +29,15 @@ public class HowToPlayScreen : MonoBehaviour
     private float leftBallPosX;
     private float rightBallPosX;
 
+    public Text[] powerUpHints;
+
 
     public GameObject obstacle;
     public GameObject powerup;
 
     public Text guideText;
+    public Text tapLeft;
+    public Text tapRight;
 
     private int stage = 0;
 
@@ -67,12 +71,25 @@ public class HowToPlayScreen : MonoBehaviour
     public void Flow() {
 
         if (stage == 1) {
-            guideText.text = "Top on Right Side!";
+            //guideText.text = "Top on Right Side!";
+            tapLeft.gameObject.SetActive(false);
+            tapRight.gameObject.SetActive(true);
             leftButton.gameObject.SetActive(false);
             rightButton.gameObject.SetActive(true);
 
         } else if (stage == 2) {
-            guideText.text = "Avoid the obstacle!";
+            tapLeft.gameObject.SetActive(false);
+            tapRight.gameObject.SetActive(false);
+            guideText.gameObject.SetActive(true);
+            if (PlayerPrefs.GetString("language") == "tr")
+            {
+                guideText.text = "Engellerden kaç!";
+            }
+            else
+            {
+                guideText.text = "Avoid the obstacle!";
+            }
+                
             leftButton.gameObject.SetActive(true);
             MoveObstacle();
 
@@ -147,7 +164,15 @@ public class HowToPlayScreen : MonoBehaviour
         }
         else if (obstacle.gameObject.transform.position.y >= 5.15 && stage == 3) {
             stage = 4;
-            guideText.text = "Collect the power-up!";
+            if (PlayerPrefs.GetString("language") == "tr")
+            {
+                guideText.text = "Güçlendirmeyi al!";
+            }
+            else
+            {
+                guideText.text = "Collect the power-up!";
+            }
+            
             powerup.gameObject.SetActive(true);
             obstacle.gameObject.SetActive(false);
         }
@@ -160,4 +185,5 @@ public class HowToPlayScreen : MonoBehaviour
             powerup.transform.position = new Vector3(powerup.transform.position.x, -5.4f, 0f);
         }
     }
+
 }

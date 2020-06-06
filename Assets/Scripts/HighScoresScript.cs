@@ -17,6 +17,9 @@ public class HighScoresScript : MonoBehaviour
     public HighScoreInfo highScores;
     public InputField inputField;
     public Button SubmitButton;
+    public Image highscore_text;
+    public Sprite highscore_turkish;
+    private string language;
     private const string API_KEY = "PrGvxpGqaHhRUWSxh70zq43ExqhIXhhW";
 
     void Start()
@@ -28,7 +31,15 @@ public class HighScoresScript : MonoBehaviour
             SubmitButton.gameObject.SetActive(false);
             DisplayHighScores();
         }
-        
+        language = PlayerPrefs.GetString("language");
+        if(language == "tr")
+        {
+            highscore_text.sprite = highscore_turkish;
+            inputField.placeholder.GetComponent<Text>().text = "Kullanıcı adı girin";
+            SubmitButton.GetComponentInChildren<Text>().text = "GÖNDER";
+
+        }
+
         
     }
 
@@ -102,12 +113,28 @@ public class HighScoresScript : MonoBehaviour
         if(userInput.Length > 20 || userInput.Length == 0)
         {
             inputField.text = "";
-            inputField.placeholder.GetComponent<Text>().text = "Enter a valid username";
+            if (PlayerPrefs.GetString("language") == "tr")
+            {
+                inputField.placeholder.GetComponent<Text>().text = "Geçerli bir kullanıcı adı girin";
+            }
+            else
+            {
+                inputField.placeholder.GetComponent<Text>().text = "Enter a valid username";
+            }
+                
         }
         else if(CheckPlayerName(userInput))
         {
             inputField.text = "";
-            inputField.placeholder.GetComponent<Text>().text = "User name already exists";
+            if (PlayerPrefs.GetString("language") == "tr")
+            {
+                inputField.placeholder.GetComponent<Text>().text = "Kullanıcı adı zaten mevcut";
+            }
+            else
+            {
+                inputField.placeholder.GetComponent<Text>().text = "User name already exists";
+            }
+            
         }
         else
         {
@@ -132,8 +159,16 @@ public class HighScoresScript : MonoBehaviour
         }
         
         int i = 0;
-        highScoreNameText.text = "NAME\n\n";
-        highScoreScoreText.text = "SCORE\n\n";
+        if(language == "en")
+        {
+            highScoreNameText.text = "NAME\n";
+            highScoreScoreText.text = "SCORE\n";
+        }
+        else
+        {
+            highScoreNameText.text = "İSİM\n";
+            highScoreScoreText.text = "SKOR\n";
+        }
 
         highScores = GetHighScores();
 
@@ -147,8 +182,8 @@ public class HighScoresScript : MonoBehaviour
             highScoreScoreText.text += p.score + "\n";
             ++i;
         }
-        highScoreNameText.text += "\n" + localName + "\n";
-        highScoreScoreText.text += "\n" + localHighScore + "\n";
+        highScoreNameText.text += localName + "\n";
+        highScoreScoreText.text += localHighScore + "\n";
     }
 
 }

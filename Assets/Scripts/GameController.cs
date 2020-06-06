@@ -12,13 +12,31 @@ public class GameController : MonoBehaviour
 {
     public static bool isPaused;
     public static bool isGameOver;
-    
+
+    public AudioSource gameAudio;
+
     public Button restartButton;
     public Button returnMainMenuButton;
     public Button resumeButton;
+
     public Image menuBackground;
     public Image pausedText;
+    public Image blurImage;
     public Image gameOverText;
+    public Image restartButton_tr;
+    public Image returnMainMenuButton_tr;
+    public Image resumeButton_tr;
+
+    public Sprite pause_tr;
+    public Sprite continue_tr;
+    public Sprite tryagain_tr;
+    public Sprite returnToMenu_tr;
+
+    public Sprite gameOver_tr;
+
+    public GameObject[] GameOverArray = new GameObject[12];
+    
+
     public Text backgroundScoreText;
     public int highScore;
 
@@ -38,7 +56,17 @@ public class GameController : MonoBehaviour
         restartButton.gameObject.SetActive(false);
         returnMainMenuButton.gameObject.SetActive(false);
         backgroundScoreText.gameObject.SetActive(false);
-        gameOverText.gameObject.SetActive(false);
+        foreach (GameObject go in GameOverArray)
+        {
+            go.gameObject.SetActive(false);
+        }
+
+        if (PlayerPrefs.GetString("audio") == "on")
+        {
+            gameAudio.Play();
+        }
+        
+
 
         if (PlayerPrefs.HasKey("score"))
         {
@@ -48,7 +76,19 @@ public class GameController : MonoBehaviour
         {
             highScore = 0;
         }
-            
+
+        
+        if (PlayerPrefs.GetString("language") == "tr")
+        {
+            GameOverArray[7].GetComponent<Text>().text = "SKOR";
+            GameOverArray[8].GetComponent<Text>().text = "EN YÜKSEK SKOR";
+            gameOverText.sprite = gameOver_tr;
+            pausedText.sprite = pause_tr;
+            restartButton_tr.sprite = tryagain_tr;
+            returnMainMenuButton_tr.sprite = returnToMenu_tr;
+            resumeButton_tr.sprite = continue_tr;
+        }
+
 
         StartGame();
     }
@@ -81,6 +121,7 @@ public class GameController : MonoBehaviour
         isPaused = true;
         //resumeButton.transform.position = new Vector3(resumeButton.transform.position.x, 378.2429f, 0);
         //restartButton.transform.position = new Vector3(restartButton.transform.position.x, 311.4257f, 0);
+        blurImage.gameObject.SetActive(true);
         menuBackground.gameObject.SetActive(true);
         pausedText.gameObject.SetActive(true);
         resumeButton.gameObject.SetActive(true);
@@ -92,6 +133,7 @@ public class GameController : MonoBehaviour
     {
         Time.timeScale = 1;
         isPaused = false;
+        blurImage.gameObject.SetActive(false);
         menuBackground.gameObject.SetActive(false);
         pausedText.gameObject.SetActive(false);
         resumeButton.gameObject.SetActive(false);
@@ -129,7 +171,7 @@ public class GameController : MonoBehaviour
                 www.SendWebRequest();
             }
         }
-
+        /*
         backgroundScoreText.text = "SCORE: " + (int)Score.score;
         menuBackground.gameObject.SetActive(true);
         gameOverText.gameObject.SetActive(true);
@@ -139,12 +181,23 @@ public class GameController : MonoBehaviour
         PauseButton.gameObject.SetActive(false);
         backgroundScoreText.gameObject.SetActive(true);
         Time.timeScale = 0;
+        */
 
+        blurImage.gameObject.SetActive(true);
+        foreach(GameObject go in GameOverArray)
+        {
+            go.gameObject.SetActive(true);
+        }
+        GameOverArray[6].GetComponent<Text>().text = ((int)Score.score).ToString();
+        GameOverArray[9].GetComponent<Text>().text = highScore.ToString();
+        isPaused = true;
+        Time.timeScale = 0;
     }
     
    
     public void returnMainMenuClicked() {
         //Debug.Log("returnMainMenuClicked called!");
+        gameAudio.Stop();
         SceneManager.LoadScene("MainMenuScene");
     }
 

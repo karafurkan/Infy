@@ -15,13 +15,14 @@ public class CollisionController : MonoBehaviour
 
     public Sprite shieldAura;
     public Sprite reverseControlsAura;
-    //public Sprite reverseDirectionAura;
+
+    public Animator leftFireAnimator;
+    public Animator rightFireAnimator;
 
     public SpriteRenderer leftBallAura;
     public SpriteRenderer rightBallAura;
     public SpriteRenderer backgroundSpriteRenderer;
     
-    public float animSpeed;
 
     //public GameObject backgroundObject;
 
@@ -99,11 +100,15 @@ public class CollisionController : MonoBehaviour
         PowerUp.hasShield = true;
         currentSpeed = objectMover.speed;
         objectMover.speed = 20f;
+        leftFireAnimator.transform.localScale = new Vector3(2f, 5f, 1f);
+        rightFireAnimator.transform.localScale = new Vector3(2f, 5f, 1f);
     }
 
     void DeactivateBoost() {
         Invoke("SetShieldOff", 1.0f);
         objectMover.speed = currentSpeed;
+        leftFireAnimator.transform.localScale = new Vector3(2f, 2.5f, 1f);
+        rightFireAnimator.transform.localScale = new Vector3(2f, 2.5f, 1f);
         PowerUpControl.Invoke("CreatePowerUp", 7f); 
     }
 
