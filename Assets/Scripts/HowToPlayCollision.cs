@@ -21,11 +21,11 @@ public class HowToPlayCollision : MonoBehaviour
         if (PlayerPrefs.GetString("language") == "tr")
         {
             
-            powerUpTexts[0].text = "Kalkan seni 5 saniye boyunca engellere karşı korur.";
-            powerUpTexts[1].text = "Gemiyi 2 saniye boyunca hızlandırır.";
-            powerUpTexts[2].text = "5 saniye boyunca kontrolleri tersine çevirir.";
-            powerUpTexts[3].text = "Oyunun akış yönünü tersine çevirir.";
-            powerUpTexts[4].text = "Ekrandaki tüm engelleri patlatır.";
+            powerUpTexts[0].text = "Kalkan seni 5 saniye boyunca engellere karşı korur";
+            powerUpTexts[1].text = "Gemiyi 2 saniye boyunca hızlandırır";
+            powerUpTexts[2].text = "5 saniye boyunca kontrolleri tersine çevirir";
+            powerUpTexts[3].text = "Oyunun akış yönünü tersine çevirir";
+            powerUpTexts[4].text = "Ekrandaki tüm engelleri patlatır";
             tapLeft.text = "Tıkla";
             tapRight.text = "Tıkla";
         }
